@@ -1,0 +1,842 @@
+{
+  "rootCoordinate": {
+    "latitude": 21.0352,
+    "longitude": 105.84024
+  },
+  "citadelRegion": [
+    {
+      "latitude": 21.032995,
+      "longitude": 105.838813
+    },
+    {
+      "latitude": 21.031252,
+      "longitude": 105.840461
+    },
+    {
+      "latitude": 21.040668,
+      "longitude": 105.842109
+    },
+    {
+      "latitude": 21.041022,
+      "longitude": 105.839947
+    },
+    {
+      "latitude": 21.038934,
+      "longitude": 105.839679
+    },
+    {
+      "latitude": 21.038546,
+      "longitude": 105.839225
+    },
+    {
+      "latitude": 21.038882,
+      "longitude": 105.836994
+    },
+    {
+      "latitude": 21.036588,
+      "longitude": 105.83652
+    },
+    {
+      "latitude": 21.036233,
+      "longitude": 105.838374
+    },
+    {
+      "latitude": 21.036343,
+      "longitude": 105.838575
+    },
+    {
+      "latitude": 21.036226,
+      "longitude": 105.839274
+    }
+  ],
+  "campuses": [
+    [
+      {
+        "latitude": 21.03324,
+        "longitude": 105.83907
+      },
+      {
+        "latitude": 21.03284,
+        "longitude": 105.83899
+      },
+      {
+        "latitude": 21.03152,
+        "longitude": 105.84033
+      },
+      {
+        "latitude": 21.036436,
+        "longitude": 105.84114
+      },
+      {
+        "latitude": 21.038185,
+        "longitude": 105.841184
+      },
+      {
+        "latitude": 21.038121,
+        "longitude": 105.841446
+      },
+      {
+        "latitude": 21.040595,
+        "longitude": 105.841935
+      },
+      {
+        "latitude": 21.04088,
+        "longitude": 105.8402
+      },
+      {
+        "latitude": 21.035277,
+        "longitude": 105.839585
+      },
+      {
+        "latitude": 21.03528,
+        "longitude": 105.839377
+      }
+    ],
+    [
+      {
+        "latitude": 21.038428,
+        "longitude": 105.839593
+      },
+      {
+        "latitude": 21.0388,
+        "longitude": 105.83705
+      },
+      {
+        "latitude": 21.037876,
+        "longitude": 105.836853
+      },
+      {
+        "latitude": 21.03764,
+        "longitude": 105.83826
+      },
+      {
+        "latitude": 21.036321,
+        "longitude": 105.837991
+      },
+      {
+        "latitude": 21.036233,
+        "longitude": 105.838374
+      },
+      {
+        "latitude": 21.036343,
+        "longitude": 105.838575
+      },
+      {
+        "latitude": 21.036226,
+        "longitude": 105.839274
+      }
+    ]
+  ],
+  "roadIntersections": [
+    {
+      "id": "a1_1",
+      "latitude": 21.040820,
+      "longitude": 105.840812
+    },
+    {
+      "id": "a1_2",
+      "latitude": 21.040782,
+      "longitude": 105.84124
+    },
+    {
+      "id": "a1_3",
+      "latitude": 21.040454,
+      "longitude": 105.840771
+    },
+    {
+      "id": "a1_4",
+      "latitude": 21.040436,
+      "longitude": 105.841174
+    },
+    {
+      "id": "a2_1",
+      "latitude": 21.036382,
+      "longitude": 105.841083
+    },
+    {
+      "id": "a2_2",
+      "latitude": 21.03643,
+      "longitude": 105.840751
+    },
+    {
+      "id": "a2_3",
+      "latitude": 21.03655,
+      "longitude": 105.83953
+    },
+    {
+      "id": "a2_4",
+      "latitude": 21.036991,
+      "longitude": 105.84003
+    },
+    {
+      "id": "a2_5",
+      "latitude": 21.037129,
+      "longitude": 105.840195
+    },
+    {
+      "id": "a2_6",
+      "latitude": 21.03744,
+      "longitude": 105.84084
+    },
+    {
+      "id": "a2_7",
+      "latitude": 21.037472,
+      "longitude": 105.84024
+    },
+    {
+      "id": "a2_8",
+      "latitude": 21.036168,
+      "longitude": 105.83995
+    },
+    {
+      "id": "a2_9",
+      "latitude": 21.035517,
+      "longitude": 105.840659
+    },
+    {
+      "id": "a2_10",
+      "latitude": 21.035455,
+      "longitude": 105.840634
+    },
+    {
+      "id": "a2_11",
+      "latitude": 21.035451,
+      "longitude": 105.840541
+    },
+    {
+      "id": "a2_12",
+      "latitude": 21.035483,
+      "longitude": 105.84004
+    },
+    {
+      "id": "a2_13",
+      "latitude": 21.03515,
+      "longitude": 105.840629
+    },
+    {
+      "id": "a2_14",
+      "latitude": 21.037519,
+      "longitude": 105.84009
+    },
+    {
+      "id": "a2_15",
+      "latitude": 21.03811,
+      "longitude": 105.84015
+    },
+    {
+      "id": "a2_16",
+      "latitude": 21.038077,
+      "longitude": 105.84052
+    },
+    {
+      "id": "a2_17",
+      "latitude": 21.037485,
+      "longitude": 105.84046
+    },
+    {
+      "id": "a2_18",
+      "latitude": 21.037847,
+      "longitude": 105.84087
+    }
+    ,
+    {
+      "id": "a3_1",
+      "latitude": 21.034219,
+      "longitude": 105.840764
+    },
+    {
+      "id": "a3_2",
+      "latitude": 21.034257,
+      "longitude": 105.840549
+    },
+    {
+      "id": "a3_3",
+      "latitude": 21.033559,
+      "longitude": 105.84046
+    },
+    {
+      "id": "a3_4",
+      "latitude": 21.0336,
+      "longitude": 105.839668
+    },
+    {
+      "id": "a3_5",
+      "latitude": 21.033643,
+      "longitude": 105.839152
+    },
+
+    {
+      "id": "a3_6",
+      "latitude": 21.034808,
+      "longitude": 105.840599
+    },
+    {
+      "id": "a3_7",
+      "latitude": 21.035056,
+      "longitude": 105.840633
+    },
+    {
+      "id": "a3_8",
+      "latitude": 21.035149,
+      "longitude": 105.839821
+    },
+    {
+      "id": "a3_9",
+      "latitude": 21.034885,
+      "longitude": 105.839786
+    },
+    {
+      "id": "a3_10",
+      "latitude": 21.035159,
+      "longitude": 105.839585
+    },
+    {
+      "id": "a3_11",
+      "latitude": 21.035103,
+      "longitude": 105.839555
+    },
+    {
+      "id": "a3_12",
+      "latitude": 21.03381,
+      "longitude": 105.839364
+    },
+    {
+      "id": "a3_13",
+      "latitude": 21.033828,
+      "longitude": 105.839163
+    },
+    {
+      "id": "a3_14",
+      "latitude": 21.0334,
+      "longitude": 105.83912
+    },
+    {
+      "id": "a3_15",
+      "latitude": 21.033569,
+      "longitude": 105.8402
+    },
+    {
+      "id": "a3_16",
+      "latitude": 21.032138,
+      "longitude": 105.839974
+    },
+    {
+      "id": "a3_17",
+      "latitude": 21.03174,
+      "longitude": 105.84014
+    },
+    {
+      "id": "a3_18",
+      "latitude": 21.03433,
+      "longitude": 105.83974
+    },
+    {
+      "id": "a3_19",
+      "latitude": 21.03435,
+      "longitude": 105.83951
+    },
+    {
+      "id": "a3_20",
+      "latitude": 21.03338,
+      "longitude": 105.83925
+    },
+    {
+      "id": "a3_21",
+      "latitude": 21.03340,
+      "longitude": 105.83964
+    },
+
+    {
+      "id": 26,
+      "latitude": 21.036529,
+      "longitude": 105.839319
+    },
+    {
+      "id": 27,
+      "latitude": 21.036620,
+      "longitude": 105.838759
+    },
+    {
+      "id": 28,
+      "latitude": 21.036661,
+      "longitude": 105.838344
+    },
+    {
+      "id": 29,
+      "latitude": 21.036916,
+      "longitude": 105.838166
+    },
+    {
+      "id": 30,
+      "latitude": 21.038170,
+      "longitude": 105.838422
+    },
+    {
+      "id": 31,
+      "latitude": 21.038410,
+      "longitude": 105.837132
+    },
+    {
+      "id": 32,
+      "latitude": 21.038478,
+      "longitude": 105.838481
+    },
+    {
+      "id": 33,
+      "latitude": 21.036269,
+      "longitude": 105.838269
+    },
+    {
+      "id": 34,
+      "latitude": 21.037140,
+      "longitude": 105.83884
+    }
+  ], 
+  "roads": [
+    ["a1_2", "a1_4"],
+    ["a2_1", "a2_2",  "a2_3"],
+    ["a2_4", "a2_5", "a2_7"], 
+    ["a2_14", "a2_6", "a2_2", "a2_9", "a2_10", "a2_11", "a2_12"],
+    ["a2_8", "a2_15", "a2_16", "a2_17"],
+    ["a2_6", "a2_18"],
+    ["a2_9", "a2_13"],
+    ["a3_1", "a3_2", "a3_3", "a3_4", "a3_5"],
+    ["a3_2", "a3_6", "a3_7", "a3_8", "a3_9", "a3_4"],
+    ["a3_6", "a3_9"],
+    ["a3_8", "a3_10", "a3_11", "a3_12", "a3_14"],
+    ["a3_12", "a3_13"],
+    ["a3_15", "a3_16", "a3_17"],
+    ["a3_18", "a3_19"],
+    ["a3_14", "a3_20"],
+    ["a3_21", "a3_4"],
+    [26, 27, 28, 29, 30, 31],
+    [30, 32],
+    [28, 33],
+    [27, 34]
+  ],
+  "landmarks": [
+    {
+      "id": "entrance",
+      "marker": {
+        "title": "Lối vào",
+        "coordinate": {
+          "latitude": 21.033367,
+          "longitude": 105.83911
+        }
+      }
+    },
+    {
+      "id": "welcome",
+      "marker": {
+        "title": "Khu đón tiếp"
+      },
+      "area": {
+        "fillColor": "rgb(71, 166, 236)",
+        "coordinates": [
+          {
+            "latitude": 21.03345,
+            "longitude": 105.839269
+          },
+          {
+            "latitude": 21.033375,
+            "longitude": 105.839757
+          },
+          {
+            "latitude": 21.033197,
+            "longitude": 105.839726
+          },
+          {
+            "latitude": 21.03327,
+            "longitude": 105.839238
+          }
+        ]
+      }
+    },
+    {
+      "id": "doanmon",
+      "marker": {
+        "title": "Di tích Doãn Môn",
+        "coordinate": {
+          "latitude": 21.035186,
+          "longitude": 105.84024
+        }
+      },
+      "area": {
+        "fillColor": "yellow",
+        "strokeWidth": 1,
+        "coordinates": [
+          {
+            "latitude": 21.03516,
+            "longitude": 105.83979
+          },
+          {
+            "latitude": 21.03508,
+            "longitude": 105.84066
+          },
+          {
+            "latitude": 21.03513,
+            "longitude": 105.84066
+          },
+          {
+            "latitude": 21.03515,
+            "longitude": 105.84048
+          },
+          {
+            "latitude": 21.03535,
+            "longitude": 105.840495
+          },
+          {
+            "latitude": 21.03536,
+            "longitude": 105.84035
+          },
+          {
+            "latitude": 21.03525,
+            "longitude": 105.84034
+          },
+          {
+            "latitude": 21.03527,
+            "longitude": 105.84015
+          },
+          {
+            "latitude": 21.03538,
+            "longitude": 105.84016
+          },
+          {
+            "latitude": 21.03539,
+            "longitude": 105.84003
+          },
+          {
+            "latitude": 21.035192,
+            "longitude": 105.84001
+          },
+          {
+            "latitude": 21.035203,
+            "longitude": 105.839795
+          }
+        ]
+      }
+    }, 
+    {
+      "id": "exhibition",
+      "marker": {
+        "title": "Phòng trưng bày"
+      },
+      "area": {
+        "fillColor": "lightblue",
+        "coordinates": [
+          {
+            "latitude": 21.03625,
+            "longitude": 105.84078
+          },
+          {
+            "latitude": 21.03624,
+            "longitude": 105.84089
+          },
+          {
+            "latitude": 21.03604,
+            "longitude": 105.84087
+          },
+          {
+            "latitude": 21.03605,
+            "longitude": 105.84076
+          }
+        ]
+      }
+    },
+    {
+      "id": "bunker",
+      "marker": {
+        "title": "Hầm T1"
+      },
+      "area": {
+        "fillColor": "red",
+        "coordinates": [
+          {
+            "latitude": 21.03618,
+            "longitude": 105.83986
+          },
+          {
+            "latitude": 21.036165,
+            "longitude": 105.84003
+          },
+          {
+            "latitude": 21.035945,
+            "longitude": 105.84001
+          },
+          {
+            "latitude": 21.03596,
+            "longitude": 105.839838
+          }
+        ]
+      }
+    },
+    {
+      "id": "kinhthien",
+      "marker": {
+        "title": "Nền điện kính Thiên"
+      },
+      "area": {
+        "fillColor": "rgb(184, 74, 101)",
+        "coordinates": [
+          {
+            "latitude": 21.036865,
+            "longitude": 105.84056
+          },
+          {
+            "latitude": 21.03689,
+            "longitude": 105.840296
+          },
+          {
+            "latitude": 21.03677,
+            "longitude": 105.840285
+          },
+          {
+            "latitude": 21.036748,
+            "longitude": 105.84055
+          }
+        ]
+      }
+    },
+    {
+      "id": "D67",
+      "marker": {
+        "title": "Hầm D67",
+        "coordinate": {
+          "latitude": 21.037321,
+          "longitude": 105.840486
+        }
+      },
+      "area": {
+        "fillColor": "rgb(226, 123, 149)",
+        "coordinates": [
+          {
+            "latitude": 21.03722,
+            "longitude": 105.84062
+          },
+          {
+            "latitude": 21.03743,
+            "longitude": 105.840645
+          },
+          {
+            "latitude": 21.03747,
+            "longitude": 105.840265
+          },
+          {
+            "latitude": 21.03726,
+            "longitude": 105.84024
+          }
+        ]
+      }
+    },
+    {
+      "id": "haulau",
+      "marker": {
+        "title": "Hậu Lâu"
+      },
+      "area": {
+        "fillColor": "yellow",
+        "coordinates": [
+          {
+            "latitude": 21.03827,
+            "longitude": 105.840455
+          },
+          {
+            "latitude": 21.03825,
+            "longitude": 105.840645
+          },
+          {
+            "latitude": 21.03811,
+            "longitude": 105.84063
+          },
+          {
+            "latitude": 21.03813,
+            "longitude": 105.84044
+          }
+        ]
+      }
+    },
+    {
+      "id": "archaeology",
+      "marker": {
+        "title": "Khu khảo cổ học 18 Hoàng Diệu",
+        "coordinate": {
+          "latitude": 21.036737,
+          "longitude": 105.839219
+        }
+      }
+    },
+    {
+      "id": "cuabac",
+      "marker": {
+        "title": "Cửa Bắc",
+        "coordinate": {
+          "latitude": 21.040573,
+          "longitude": 105.840999
+        }
+      },
+      "area": {
+        "fillColor": "yellow",
+        "coordinates": [
+          {
+            "latitude": 21.04061,
+            "longitude": 105.84113
+          },
+          {
+            "latitude": 21.04064,
+            "longitude": 105.84096
+          },
+          {
+            "latitude": 21.04046,
+            "longitude": 105.84092
+          },
+          {
+            "latitude": 21.04042,
+            "longitude": 105.84117
+          },
+          {
+            "latitude": 21.04045,
+            "longitude": 105.84118
+          },
+          {
+            "latitude": 21.04047,
+            "longitude": 105.84110
+          }
+        ]
+      }
+    }, 
+    {
+      "id": "flag",
+      "marker": {
+        "title": "Cột cờ Hà Nội"
+      }, 
+      "area": {
+        "fillColor": "rgb(232, 123, 49)",
+        "coordinates": [
+          {
+            "latitude": 21.03277,
+            "longitude": 105.83963
+          },
+          {
+            "latitude": 21.03272,
+            "longitude": 105.84003
+          },
+          {
+            "latitude": 21.03235,
+            "longitude": 105.83998
+          },
+          {
+            "latitude": 21.03239,
+            "longitude": 105.83959
+          }
+        ]
+      }
+    },
+    {
+      "id": "parking",
+      "marker": {
+        "title": "Bãi đỗ xe",
+        "number": "P"
+      },
+      "area": {
+        "zIndex": 1,
+        "strokeWidth": 0,
+        "fillColor": "rgba(255, 172, 207, 0.5)",
+        "coordinates": [
+          {
+            "latitude": 21.035118,
+            "longitude": 105.839399
+          },
+          {
+            "latitude": 21.035104,
+            "longitude": 105.839600
+          },
+          {
+            "latitude": 21.033682,
+            "longitude": 105.839431
+          },
+          {
+            "latitude": 21.033717,
+            "longitude": 105.839195
+          }
+        ]
+      }
+    },
+    {
+      "id": "cuabaczone",
+      "area": {
+        "zIndex": 0,
+        "strokeWidth": 0,
+        "fillColor": "rgb(245, 245, 245)",
+        "coordinates": [
+          {
+            "latitude": 21.04077,
+            "longitude": 105.84086
+          },
+          {
+            "latitude": 21.0407,
+            "longitude": 105.841245
+          },
+          {
+            "latitude": 21.04039,
+            "longitude": 105.8412
+          },
+          {
+            "latitude": 21.04046,
+            "longitude": 105.8408
+          }
+        ]
+      }
+    },
+    {
+      "id": "other",
+      "area": {
+        "zIndex": -1,
+        "strokeWidth": 0,
+        "fillColor": "rgb(200, 200, 200)",
+        "coordinates": [
+          {
+            "latitude": 21.038126,
+            "longitude": 105.841443
+          },
+          {
+            "latitude": 21.040592,
+            "longitude": 105.84193
+          },
+          {
+            "latitude": 21.040875,
+            "longitude": 105.840205
+          },
+          {
+            "latitude": 21.03842,
+            "longitude": 105.83994
+          }
+        ]
+      }
+    },
+    {
+      "id": "grass1",
+      "area": {
+        "zIndex": -1,
+        "fillColor": "rgb(185, 233, 164)",
+        "coordinates": [
+          {
+            "latitude": 21.03359,
+            "longitude": 105.84046
+          },
+          {
+            "latitude": 21.035056,
+            "longitude": 105.840633
+          },
+          {
+            "latitude": 21.035159,
+            "longitude": 105.839615
+          },
+          {
+            "latitude": 21.03369,
+            "longitude": 105.83943
+          }
+        ]
+      }
+    }
+  ]
+}
