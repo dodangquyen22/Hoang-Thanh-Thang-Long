@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import BottomButtonBar from '../../components/NavigatorBottomBar';
 import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { IPWifi } from "../../constants";
 
 const PurchasedTicketsScreen = ({ navigation }) => {
   const[dataTicket, setDataTicket] = useState([]);
@@ -15,7 +15,7 @@ const PurchasedTicketsScreen = ({ navigation }) => {
   try {
       parsedData = await AsyncStorage.getItem('userData');
       username = JSON.parse(parsedData);
-      const response = await fetch('http://172.20.10.3:3000/viewTicket', {
+      const response = await fetch(`http://${IPWifi}:3000/viewTicket`, {
       method: 'POST',
       headers:
       {

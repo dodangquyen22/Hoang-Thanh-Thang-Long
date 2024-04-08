@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Button, StyleSheet, Alert, SafeAreaView, 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
-
+import { IPWifi } from "../../constants";
 import BottomButtonBar from "../../components/NavigatorBottomBar";
 import { ticketStyles } from "../../styles/globalStyles";
 import { info } from "./TicketScreen";
@@ -24,7 +24,7 @@ export default function SuccessScreen() {
             adult =info.adult;
             child = info.child;
             fee = info.fee;
-            const response = await fetch('http://172.20.10.3:3000/ticket', {
+            const response = await fetch(`http://${IPWifi}:3000/ticket`, {
             method: 'POST',
             headers:
             {

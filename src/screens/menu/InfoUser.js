@@ -8,6 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { useState, useEffect } from 'react';
 import { EditUserInfoWindow } from '../../components/EditUserInfo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { IPWifi } from "../../constants";
 
 export default function UserInfoScreen() {
     const navigation = useNavigation();
@@ -32,7 +33,7 @@ export default function UserInfoScreen() {
         try {
             parsedData = await AsyncStorage.getItem('userData');
             username = JSON.parse(parsedData);
-            const response = await fetch('http://172.20.10.3:3000/viewInfo', {
+            const response = await fetch(`http://${IPWifi}:3000/viewInfo`, {
                 method: 'POST',
                 headers:
                 {
@@ -64,7 +65,7 @@ export default function UserInfoScreen() {
         emailEdit = updatedUser.email
         phoneEdit = updatedUser.phone
         try {
-            const response = await fetch('http://172.20.10.3:3000/changeInfo', {
+            const response = await fetch(`http://${IPWifi}:3000/changeInfo`, {
                 method: 'POST',
                 headers:
                 {

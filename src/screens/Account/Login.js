@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { View, TextInput, Button, Image, StyleSheet, TouchableOpacity, Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { IPWifi } from "../../constants";
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -11,7 +12,7 @@ const LoginScreen = ({ navigation }) => {
   const handleLogin = async () => {
     // Xử lý logic đăng nhập ở đây
     try {
-      const response = await fetch('http://172.20.10.3:3000/login', {
+      const response = await fetch(`http://${IPWifi}:3000/login`, {
         method: 'POST',
         headers:
         {

@@ -1,16 +1,16 @@
 import * as React from "react";
-import { View, Text, TouchableOpacity, Button, StyleSheet, Alert, SafeAreaView, TextInput, ScrollView} from "react-native";
+import { View, Text, TouchableOpacity, Button, StyleSheet, Alert, SafeAreaView, TextInput, ScrollView, Linking  } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import DatePicker from 'react-native-date-picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
-
 import BottomButtonBar from "../../components/NavigatorBottomBar";
 import { PopUp } from "../../components/PopUp";
 import { ticketStyles } from "../../styles/globalStyles";
-import {CustomDatePicker} from "../../components/DatePicker";
+import { CustomDatePicker } from "../../components/DatePicker";
+import { IPWifi } from "../../constants";
 
 export const info = {
     "name": '',
@@ -41,8 +41,8 @@ export default function TicketScreen() {
 
     const nameRegex = /^[a-zA-Z][a-zA-Z ]*[a-zA-Z]$/;
 
-    const handlePress = (buttonName) => {
-        navigation.navigate(buttonName);
+    const handlePress = async (buttonName) => {
+        // navigation.navigate(buttonName);
         setConfirmVisible(!isConfirmVisible);
         info.name = text;
         info.phone = phone;
@@ -50,6 +50,33 @@ export default function TicketScreen() {
         info.adult = adultTicket;
         info.child = childTicket;
         info.fee = price * adultTicket + price * childTicket / 2;
+
+        const amount = 10000; // Số tiền đơn hàng
+        const orderInfo = "test"; // Thông tin đơn hàng
+        const formData = new FormData();
+        formData.append('amount', amount);
+        formData.append('orderInfo', orderInfo);
+        try {
+            const response = await fetch('http://192.168.45.7:8080/submitOrder', {
+              method: 'POST',
+              body: formData,
+            });
+        
+            if (response.ok) {
+              let vnpayUrl = await response.text();
+              console.log('VNPay URL:', vnpayUrl);
+              vnpayUrl = vnpayUrl.substring(9, vnpayUrl.length);
+              console.log('VNPay URL:', vnpayUrl);
+
+              const res = await Linking.openURL(vnpayUrl);
+
+            } else {
+              console.error('Submit order failed');
+            }
+          } catch (error) {
+            console.error('Error submitting order:', error);
+          }
+
     };
 
     const toggleModal = (typeOfModal) => {
@@ -125,7 +152,7 @@ export default function TicketScreen() {
                     style={ticketStyles.input}
                     onChangeText={onChangeText}
                     value={text}
-                    placeholder='Nguyễn Văn A'/>
+                    placeholder='Nguyễn Văn A' />
                 <Text style={ticketStyles.label}>Số điện thoại:</Text>
                 <TextInput
                     style={ticketStyles.input}
@@ -155,7 +182,7 @@ export default function TicketScreen() {
                 )}
 
                 <View style={ticketStyles.warning}>
-                    {(warn) ? <Text style= {{color: 'red'}}>Vui lòng chọn ngày từ {formatDate(new Date())} trở đi!</Text> : <Text></Text>}
+                    {(warn) ? <Text style={{ color: 'red' }}>Vui lòng chọn ngày từ {formatDate(new Date())} trở đi!</Text> : <Text></Text>}
                 </View>
                 <View>
                     <Text style={ticketStyles.label}>Số lượng vé:</Text>
@@ -202,7 +229,7 @@ export default function TicketScreen() {
                         <Text style={ticketStyles.popText}>Người đặt vé: {text}</Text>
                         <Text style={ticketStyles.popText}>Số điện thoại: {phone}</Text>
                         <Text style={ticketStyles.popText}>Thông tin vé: {adultTicket} vé người lớn + {childTicket} vé học sinh /
-                         sinh viên / người cao tuổi, ngày {formatDate(date)}</Text>
+                            sinh viên / người cao tuổi, ngày {formatDate(date)}</Text>
                         <Text style={ticketStyles.popText}>Thành tiền: </Text>
                         <Text style={ticketStyles.strong}>{price * adultTicket + price * childTicket / 2} VND</Text>
                     </PopUp.Body>
@@ -217,11 +244,11 @@ export default function TicketScreen() {
                 <PopUp.Container>
                     <PopUp.Header title="Thông báo" />
                     <PopUp.Body>
-                        { (text == '' || phone == '') ?
+                        {(text == '' || phone == '') ?
                             <Text style={ticketStyles.popText}>Vui lòng điền đầy đủ thông tin!</Text> :
-                            ( (nameRegex.test(text)) ? (<Text style={ticketStyles.popText}>Họ và tên không hợp lệ!</Text>) :
-                                ((phone.length != 10 || phone.charAt(0) != '0') ? (<Text style={ticketStyles.popText}>Số điện thoại không hợp lệ!</Text> ) :
-                                    ( (adultTicket <= 0 || childTicket <= 0) ? (<Text style={ticketStyles.popText}>Vui lòng chọn số lượng vé!</Text>) :
+                            ((nameRegex.test(text)) ? (<Text style={ticketStyles.popText}>Họ và tên không hợp lệ!</Text>) :
+                                ((phone.length != 10 || phone.charAt(0) != '0') ? (<Text style={ticketStyles.popText}>Số điện thoại không hợp lệ!</Text>) :
+                                    ((adultTicket <= 0 || childTicket <= 0) ? (<Text style={ticketStyles.popText}>Vui lòng chọn số lượng vé!</Text>) :
                                         (<Text style={ticketStyles.popText}>No error found!</Text>)
                                     )
                                 )
