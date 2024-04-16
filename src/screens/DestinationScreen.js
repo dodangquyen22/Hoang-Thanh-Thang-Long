@@ -64,7 +64,7 @@ export default function DestinationScreen(props) {
         {/* back button */}
         <SafeAreaView className={"flex-row justify-between items-center w-full absolute " + topMargin}>
             <TouchableOpacity
-                onPress={()=> navigation.goBack()}
+                onPress={()=> {navigation.goBack(); stopText();}}
                 className="p-2 rounded-full ml-4"
                 style={{backgroundColor: 'rgba(255,255,255,0.5)'}}
             >

@@ -8,7 +8,7 @@ import {
   Dimensions,
   SafeAreaView,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import BottomButtonBar from "../components/NavigatorBottomBar";
 import { ScrollView, FlatList } from "react-native";
 import SlideImage from "../components/SlideImage";
@@ -30,9 +30,7 @@ export default function InfoScreen() {
   const [isSpeaking, setIsSpeaking] = React.useState(false);
 
   React.useEffect(() => {
-    setDescriptionText(
-      text
-    );
+    setDescriptionText(text);
   }, []);
 
   const speakText = () => {

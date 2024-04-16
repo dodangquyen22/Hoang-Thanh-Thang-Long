@@ -10,6 +10,7 @@ import { Button } from 'react-native-elements';
 import { useNavigationState } from "@react-navigation/native";
 import { color } from 'react-native-elements/dist/helpers';
 import theme from '../theme';
+import * as Speech from 'expo-speech';
 
 const BottomButtonBar = () => {
     const navigation = useNavigation();
@@ -19,6 +20,10 @@ const BottomButtonBar = () => {
         navigation.navigate(buttonName)
         console.log(navigationState.routes[navigationState.index].name)
     }
+
+    const stopText = () => {
+        Speech.stop();
+    };
 
     return (
         <View style={globalStyles.navigator}>
@@ -31,28 +36,28 @@ const BottomButtonBar = () => {
 
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => handlePress('Map')}>
+            <TouchableOpacity onPress={() => { handlePress('Map'); stopText(); }}>
                 <View style={styles.buttonContainer}>
-                    <Entypo name="location-pin" color={navigationState.routes[navigationState.index].name === 'Map' ? '#f97316' : 'gray'} size={26}>
+                    <Entypo name="location-pin" color={navigationState.routes[navigationState.index].name === 'Map' ? '#f97316' : 'gray'} size={26} >
                     </Entypo>
                     <Text style={[styles.textNavigator, { color: navigationState.routes[navigationState.index].name === 'Map' ? '#f97316' : 'gray' }]}>Bản đồ</Text>
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => handlePress('Home')}>
+            <TouchableOpacity onPress={() => {handlePress('Home'); stopText(); }}>
                 <View style={styles.buttonContainer}>
                     <Octicons name="home" color={navigationState.routes[navigationState.index].name === 'Home' ? '#f97316' : 'gray'} size={26}>
                     </Octicons>
                     <Text style={[styles.textNavigator, { color: navigationState.routes[navigationState.index].name === 'Home' ? '#f97316' : 'gray' }]}>Trang chủ</Text>
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => handlePress('Event')}>
+            <TouchableOpacity onPress={() => {handlePress('Event'); stopText();}}>
                 <View style={styles.buttonContainer}>
                     <MaterialCommunityIcons name="calendar" color={navigationState.routes[navigationState.index].name === 'Event' ? '#f97316' : 'gray'} size={26}>
                     </MaterialCommunityIcons>
                     <Text style={[styles.textNavigator, { color: navigationState.routes[navigationState.index].name === 'Event' ? '#f97316' : 'gray' }]}>Sự kiện</Text>
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => handlePress('Setting')}>
+            <TouchableOpacity onPress={() => {handlePress('Setting'); stopText();}}>
                 <View style={styles.buttonContainer}>
                     <Icon name="bars" color={navigationState.routes[navigationState.index].name === 'Setting' ? '#f97316' : 'gray'} size={26}>
                     </Icon>

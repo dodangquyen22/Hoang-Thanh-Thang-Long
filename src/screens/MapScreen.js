@@ -13,6 +13,7 @@ import mapStyle from "../../data/mapStyle.json";
 
 export default function MapScreen() {
     const navigation = useNavigation();
+      
     const [mapRegion, setMapRegion] = React.useState({
         ...mapData.rootCoordinate,
         latitudeDelta: 0.01,
