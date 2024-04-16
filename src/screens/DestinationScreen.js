@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, ScrollView, Platform } from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView, Platform, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -7,6 +7,8 @@ import { ChevronLeftIcon } from 'react-native-heroicons/outline';
 import { ClockIcon, HeartIcon, MapPinIcon, SunIcon } from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '../theme';
+import { FontAwesome } from "@expo/vector-icons";
+import * as Speech from "expo-speech";
 
 const ios = Platform.OS == 'ios';
 const topMargin = ios? '': 'mt-10';
@@ -16,6 +18,42 @@ export default function DestinationScreen(props) {
     console.log(item)
     const navigation = useNavigation();
     const [isFavourite, toggleFavourite] = useState(false);
+
+    const description = item.longDescription;
+
+    const [isSpeaking, setIsSpeaking] = React.useState(false);
+    const [descriptionText, setDescriptionText] = React.useState(""); 
+
+    React.useEffect(() => {
+        setDescriptionText(
+            description
+        );
+    }, []);
+
+    const speakText = () => {
+        setIsSpeaking(true);
+        Speech.speak(descriptionText, {
+            pitch: 1,
+            rate: 1,
+            volume: 1,
+            onStopped: () => setIsSpeaking(false),
+            onError: () => setIsSpeaking(false),
+        });
+    };
+
+    const stopText = () => {
+        Speech.stop();
+        setIsSpeaking(false);
+    };
+
+    const toggleSpeaking = () => {
+        if (isSpeaking) {
+            stopText();
+        } else {
+            speakText();
+        }
+        setIsSpeaking(!isSpeaking);
+    };
 
   return (
     <View className="bg-white flex-1">
@@ -40,7 +78,13 @@ export default function DestinationScreen(props) {
                 <View className="flex-row justify-between items-start">
                     <Text style={{fontSize: wp(7)}} className="font-bold flex-1 text-neutral-700">
                         {item?.title}
+                        
                     </Text>
+                    <View style={styles.buttonRow}>
+            <TouchableOpacity style={styles.button} onPress={toggleSpeaking}>
+            <FontAwesome name={isSpeaking ? "volume-down" : "volume-up"} size={24} color="black" />
+          </TouchableOpacity>
+            </View>
                 </View>
                 <Text style={{fontSize: wp(3.7), textAlign: 'justify'}} className="text-neutral-700 tracking-wide mb-2">{item?.longDescription}</Text>
                 {/* <View className="flex-row justify-between mx-1">
@@ -55,3 +99,17 @@ export default function DestinationScreen(props) {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+    buttonRow: {
+        flexDirection: 'row', 
+        justifyContent: 'space-around'
+      },
+      button: {
+        backgroundColor: '#DDDDDD', // Adjust background color as needed
+        padding: 10,
+        marginTop: 5,
+        marginBottom: 20,
+        borderRadius: 5,
+      },
+});
