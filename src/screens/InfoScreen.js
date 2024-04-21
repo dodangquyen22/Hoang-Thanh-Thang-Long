@@ -33,24 +33,9 @@ export default function InfoScreen() {
     setDescriptionText(text);
   }, []);
 
-  const [voices, setVoices] = React.useState([]);
-
-  const getVoicesAsync = async () => {
-    try {
-      const voices = await Speech.getAvailableVoicesAsync();
-      console.log(voices);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  
-  getVoicesAsync();
-
   const speakText = () => {
     setIsSpeaking(true);
     Speech.speak(descriptionText, {
-       // Default voice
-      voice: 'vi-vn-x-vic-local',
       pitch: 1,
       rate: 1,
       volume: 1,
@@ -72,18 +57,6 @@ export default function InfoScreen() {
     }
     setIsSpeaking(!isSpeaking);
   };
-
-  // const getVoicesAsync = async () => {
-  //   try {
-  //     const voices = await Speech.getAvailableVoicesAsync();
-  //     console.log(voices);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  
-  // getVoicesAsync();
-
 
   return (
     <View style={styles.container}>
