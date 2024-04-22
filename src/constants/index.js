@@ -13,7 +13,7 @@ export const destinationData = [
         Ngày 10/10/1954, lá cờ đỏ sao vàng - cờ Tổ quốc được tung bay lần đầu tiên trên đỉnh "Cột cờ Hà Nội",tuyên bố sự giành độc lập của Việt Nam sau cuộc chiến tranh Đông Dương. Cột cờ Hà Nội được coi là biểu tượng quan trọng của thành phố và đất nước, và nó thường được sử dụng làm địa điểm tổ chức các sự kiện quan trọng và lễ kỷ niệm quốc gia.
         
         `,
-    image: require('../../assets/images/Cotco1.png')
+    image: 'https://firebasestorage.googleapis.com/v0/b/hoang-thanh-thang-long.appspot.com/o/images%2FCotco1.png?alt=media&token=73a8caa1-05cc-4ae1-a6e1-240270aac318'
   },
   {
     title: 'Đoan Môn',
@@ -24,7 +24,7 @@ export const destinationData = [
         Cửa giữa là cửa lớn nhất, dành riêng cho nhà vua, cao 4m và rộng 2,7m. Hai bên có 4 cửa nhỏ hơn, cao 3,8m và rộng 2,5m, dùng để các quan, hoàng thân quốc thích ra vào cung cấm trong các dịp lễ lớn tại điện Kinh Thiên. Trên cửa chính, có một tấm biển đá khắc hai chữ "Đoan Môn". Tầng hai có diện tích tương ứng với cửa chính giữa và trên nóc tầng hai có một phương đình nhỉ kiểu hai tầng tám mái. Mái lợp ngói, hai đầu nóc đắp hai con rồng và hai hồi đắp hình hổ phù. Các góc mái trên tạo thành đao cong.
         
         Năm 1999, các nhà khảo cổ học đã tiến hành khai quật tại Đoan Môn và tìm thấy dấu vết của con đường Ngự đạo xưa. Các khám phá bao gồm đường viền đá lát chân tường Đoan Môn, một sân lát đá gạch vồ thời Lê và một con đường lát gạch "hoa chanh" thời Trần. Có những đáng chú ý là trong số gạch lát con đường thời Trần còn có những viên gạch thời Lý được tái sử dụng. Kết quả khảo cổ học này củng cố giả thiết về Đoan Môn thời Lý, Trần, Lê tại cùng một vị trí.`,
-    image: require('../../assets/images/DoanMon1.png')
+    image: 'https://firebasestorage.googleapis.com/v0/b/hoang-thanh-thang-long.appspot.com/o/images%2FDoanMon1.png?alt=media&token=f03e343d-50bc-4b0f-ae65-63012c149bbe'
   },
 
   {
@@ -36,7 +36,7 @@ export const destinationData = [
         Ngày nay, không gian nơi này trở thành một di tích kép cho cả hai thời đại: Điện Kính Thiên của Hoàng thành Thăng Long xưa và Bộ Tổng Chỉ huy Quân đội nhân dân Việt Nam - di tích lịch sử quan trọng của lịch sử hiện đại Việt Nam.
         
         `,
-    image: require('../../assets/images/Dienkinhthien1.png')
+    image: 'https://firebasestorage.googleapis.com/v0/b/hoang-thanh-thang-long.appspot.com/o/images%2FDienkinhthien1.png?alt=media&token=ddf1a7cd-d56c-4ed1-b359-761250c029b6'
   },
   {
     title: 'Nhà cách mạng D67',
@@ -52,7 +52,7 @@ export const destinationData = [
         Nhà D67 là một công trình kiến trúc quân sự giản dị nhưng giá trị  sử dụng rất cao. Trong 7 năm, ngôi nhà bảo đảm an toàn cho Bộ Thống soái tối cao làm việc, hoạch định chủ trương, chỉ đạo tôt chức thực hiện thắng lợi giai đoạn cuối cùng của cuộc kháng chiến chống Mỹ, cứu nước. Nhà D67 một trong các di tích văn hóa quân sự quí giá thời đại Hồ Chí Minh ở thế kỉ 20.
         
         `,
-    image: require('../../assets/images/Nha1.png')
+    image: 'https://firebasestorage.googleapis.com/v0/b/hoang-thanh-thang-long.appspot.com/o/images%2FNha1.png?alt=media&token=0ebcbb70-7eb8-4e88-ba66-b5b4a1418a54'
   },
   {
     title: 'Hậu Lâu',
@@ -63,7 +63,7 @@ export const destinationData = [
         Với các vết tích kiến trúc khai quật được, có thể nói lần đầu tiên trong lịch sử nghiên cứu Thăng Long – Hà Nội, cùng với cuộc đào thăm dò khảo cổ ở Đoạn Môn, các nhà nghiên cứu đã tìm thấy vết tích nền móng của nhiều kiến trúc, nhiều thời kì lịch sử với đặc trưng khác nhau. Khu vực này cách điện Kính Thiên không xa và theo sử cũ, là nơi có nhiều cung điện, lầu gác của triều đình. Như vậy có thể khẳng định một lần nữa Hậu Lâu nằm trong khu vực trung tâm của Hoàng Thành Thăng Long thời Lý – Trần – Lê.
         
         `,
-    image: require('../../assets/images/Haulau1.png')
+    image: 'https://firebasestorage.googleapis.com/v0/b/hoang-thanh-thang-long.appspot.com/o/images%2FHaulau1.png?alt=media&token=0356c171-de5b-49e0-8801-8104ab0e7a7f'
   },
   {
     title: 'Cửa Bắc',
@@ -81,7 +81,7 @@ export const destinationData = [
         Ngày nay, Bắc Môn trở thành điểm tham quan thú vị đối với du khách trong và ngoài nước. Du khách có thể dễ dàng nhận thấy phía ngoài Bắc Môn vẫn còn lưu dấu 2 vết đạn thần công của Pháp khi chúng dùng chiến thuyền tấn công thành Hà Nội từ phía bờ sông Hồng năm 1882.
         Thành cửa Bắc không chỉ là một di tích còn sót lại của khu thành cổ Hà Nội mà còn là minh chứng cho những cuộc chiến đấu anh dũng của quân dân Hà Nội trong những ngày đầu chống lại sự xâm lăng của thực dân Pháp chiếm thành Hà Nội.
         `,
-    image: require('../../assets/images/Cuabac1.png')
+    image: 'https://firebasestorage.googleapis.com/v0/b/hoang-thanh-thang-long.appspot.com/o/images%2FCuabac1.png?alt=media&token=64e39644-e0bb-49d8-9738-ac8dc1c2c0e0'
   },
   {
     title: 'Di tích khảo cổ',
@@ -103,7 +103,7 @@ export const destinationData = [
         Những phát hiện của khảo cổ học về Khu Di tích Hoàng thành Thăng Long tại 18 Hoàng Diệu được các nhà khoa học trong nước và quốc tế đánh giá cao, coi đây là những phát hiện quan trọng có giá trị hàng đầu về lịch sử văn hóa của dân tộc, góp phần nâng cao vị thế của Thăng Long – Hà Nội và lòng tự hào về lịch sử dân tộc Việt Nam.
         
         `,
-    image: require('../../assets/images/Ditich1.png')
+    image: 'https://firebasestorage.googleapis.com/v0/b/hoang-thanh-thang-long.appspot.com/o/images%2FDitich1.png?alt=media&token=e0082bac-63f1-472f-89cc-e9642f8b6bec'
   },
 
 ]

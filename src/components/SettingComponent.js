@@ -44,7 +44,7 @@ const Settings = () => {
 
   const handleLoginLogout = async () => {
     try {
-      const response = await fetch('http://172.20.10.3:3000/logout', {
+      const response = await fetch('http://192.168.1.9/logout', {
         method: 'POST',
         headers:
         {
