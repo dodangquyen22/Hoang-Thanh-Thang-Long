@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "955330957525",
+    "project_id": "hoang-thanh-thang-long-4f942",
+    "storage_bucket": "hoang-thanh-thang-long-4f942.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955330957525:android:cd4fe5dc9a1f2bba0c925c",
+        "android_client_info": {
+          "package_name": "com.HoangThanhThangLong.exporeactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955330957525-l5nr0tria4eo07v4qcmivap6m82rg8g0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZDDZy1LmV3hFEQ93Ulf9PTzMsl5lApD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955330957525-l5nr0tria4eo07v4qcmivap6m82rg8g0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
