@@ -25,7 +25,8 @@
       "eas": {
         "projectId": "08106643-4697-4497-8301-19d82569ca8e"
       }
-    }
+    },
+    "scheme": "HoangThanhThangLong"
   },
   "android": {
     "adaptiveIcon": {

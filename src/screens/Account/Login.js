@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
-import { View, TextInput, Button, Image, StyleSheet, TouchableOpacity, Text, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
+import { View, TextInput, Button, Image, StyleSheet, TouchableOpacity, Text, Keyboard, TouchableWithoutFeedback, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Google from 'expo-auth-session/providers/google';
-import { ResponseType } from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithCredential,
-} from 'firebase/auth';
-
-
-import { auth } from './../../../firebaseConfig';
+} from "firebase/auth";
+import { auth } from "../../../firebaseConfig";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -20,33 +17,52 @@ const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [userInfor, setUserInfor] = useState({});
+  const [token, setToken] = useState("");
+  const [userInfo, setUserInfo] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const [request, response, promptAsync] = Google.useAuthRequest({
-    iosClientId: '15785712342-k9bgo9hridhm3snak23achi1qgpnsdpm.apps.googleusercontent.com',
-    androidClientId: '15785712342-b6487ks6dhhjfge93cuvdp985f36meh5.apps.googleusercontent.com',
-    responseType: ResponseType.Token,
+    androidClientId: "15785712342-b6487ks6dhhjfge93cuvdp985f36meh5.apps.googleusercontent.com",
+    iosClientId: "15785712342-k9bgo9hridhm3snak23achi1qgpnsdpm.apps.googleusercontent.com",
   });
 
-  const handleGoogleLogin = async () => {
-    try {
-      if (request) {
-        const result = await promptAsync();
-        if (result.type === 'success') {
-          // Create Firebase credential
-          const credential = firebase.auth.GoogleAuthProvider.credential(
-            result.authentication.idToken
-          );
-          // Sign in with Firebase
-          await firebase.auth().signInWithCredential(credential);
+  //IOS: 15785712342-k9bgo9hridhm3snak23achi1qgpnsdpm.apps.googleusercontent.com
+  //Android: 15785712342-b6487ks6dhhjfge93cuvdp985f36meh5.apps.googleusercontent.com
 
-          // Store user data, navigate, etc.
-          // ... your existing logic ...
-        }
-      }
-    } catch (error) {
-      console.error(error);
+  useEffect(() => {
+    if (response?.type == "success") {
+      const { id_token } = response.params;
+      const credential = GoogleAuthProvider.credential(id_token);
+      signInWithCredential(auth, credential);
+    }
+  }, [response]);
+
+  const getLocalUser = async () => {
+    try {
+      setLoading(true);
+      const userJSON = await AsyncStorage.getItem("@user");
+      const userData = userJSON ? JSON.parse(userJSON) : null;
+      setUserInfo(userData);
+    } catch (e) {
+      console.log(e, "Error getting local user");
+    } finally {
+      setLoading(false);
     }
   };
+
+  React.useEffect(() => {
+    getLocalUser();
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        await AsyncStorage.setItem("@user", JSON.stringify(user));
+        console.log(JSON.stringify(user, null, 2));
+        setUserInfo(user);
+      } else {
+        console.log("user not authenticated");
+      }
+    });
+    return () => unsub();
+  }, []);
 
   const handleLogin = async () => {
     // Xử lý logic đăng nhập ở đây
@@ -78,9 +94,11 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
-
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <SafeAreaView
+      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
           <Ionicons name="chevron-back-circle-outline" size={32}>
@@ -103,9 +121,29 @@ const LoginScreen = ({ navigation }) => {
         {error ? <Text style={{color: 'red'}}>{error}</Text> : null}
         <Button title="Đăng nhập" onPress={handleLogin} />
         <Button title="Đăng kí" onPress={() => navigation.navigate("SignUpScreen")} />
-        <Button title="Đăng nhập với Google" onPress={handleGoogleLogin} />
       </View>
     </TouchableWithoutFeedback>
+      <TouchableOpacity
+        style={{
+          backgroundColor: "#4285F4",
+          width: "90%",
+          padding: 10,
+          borderRadius: 15,
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 15,
+          marginTop: 80,
+          marginBottom: 150,
+        }}
+        onPress={() => promptAsync()}
+      >
+        <AntDesign name="google" size={30} color="white" />
+        <Text style={{ fontWeight: "bold", color: "white", fontSize: 17 }}>
+          Sign In with Google
+        </Text>
+      </TouchableOpacity>
+    </SafeAreaView>
   );
 };
 

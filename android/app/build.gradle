@@ -83,7 +83,7 @@ android {
 
     namespace 'com.HoangThanhThangLong.exporeactnative'
     defaultConfig {
-        manifestPlaceholders = [appAuthRedirectScheme: 'dev.expo.app']
+        manifestPlaceholders = [appAuthRedirectScheme: 'HoangThanhThangLong']
         applicationId 'com.HoangThanhThangLong.exporeactnative'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
