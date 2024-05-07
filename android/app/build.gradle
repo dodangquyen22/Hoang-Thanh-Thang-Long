@@ -81,7 +81,7 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.HoangThanhThangLong.exporeactnative'
+    namespace "com.hoangthanhthanglong"
     defaultConfig {
         manifestPlaceholders = [appAuthRedirectScheme: 'HoangThanhThangLong']
         applicationId 'com.HoangThanhThangLong.exporeactnative'

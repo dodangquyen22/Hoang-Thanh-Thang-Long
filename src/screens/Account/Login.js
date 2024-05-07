@@ -24,6 +24,7 @@ const LoginScreen = ({ navigation }) => {
   const [request, response, promptAsync] = Google.useAuthRequest({
     androidClientId: "15785712342-b6487ks6dhhjfge93cuvdp985f36meh5.apps.googleusercontent.com",
     iosClientId: "15785712342-k9bgo9hridhm3snak23achi1qgpnsdpm.apps.googleusercontent.com",
+    webClientId: "15785712342-9seersljt4fogjdq2vbe71lq72u7vjqc.apps.googleusercontent.com",
   });
 
   //IOS: 15785712342-k9bgo9hridhm3snak23achi1qgpnsdpm.apps.googleusercontent.com
