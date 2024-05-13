@@ -14,27 +14,37 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "isAndroidBackgroundLocationEnabled": "true"
+        }
+      ]
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.HoangThanhThangLong.exporeactnative"
-    },
-    "android": {
-      "package": "com.HoangThanhThangLong.exporeactnative"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "08106643-4697-4497-8301-19d82569ca8e"
+      "infoPlist": {
+        "UIBackgroundModes": ["fetch"]
       }
     },
-    "scheme": "HoangThanhThangLong"
-  },
-  "android": {
-    "adaptiveIcon": {
-      "foregroundImage": "./assets/adaptive-icon.png",
-      "backgroundColor": "#ffffff"
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_LOCATION_EXTRA_COMMANDS"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBzhXLj2bqe2g8AIctJe1IDkYbH2F0uvso"
+        }
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
     }
-  },
-  "web": {
-    "favicon": "./assets/favicon.png"
   }
 }
