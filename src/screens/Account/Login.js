@@ -4,12 +4,13 @@ import { View, TextInput, Button, Image, StyleSheet, TouchableOpacity, Text, Key
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Google from 'expo-auth-session/providers/google';
 import * as WebBrowser from 'expo-web-browser';
+import 'firebase/auth';
 import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithCredential,
 } from "firebase/auth";
-import { auth } from "../../../firebaseConfig";
+import { getApp, getAuth } from "../../../firebaseConfig";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -21,10 +22,12 @@ const LoginScreen = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const auth = getAuth(getApp());
+
   const [request, response, promptAsync] = Google.useAuthRequest({
     androidClientId: "15785712342-b6487ks6dhhjfge93cuvdp985f36meh5.apps.googleusercontent.com",
     iosClientId: "15785712342-k9bgo9hridhm3snak23achi1qgpnsdpm.apps.googleusercontent.com",
-    webClientId: "15785712342-9seersljt4fogjdq2vbe71lq72u7vjqc.apps.googleusercontent.com",
+    expoClientId: "15785712342-9seersljt4fogjdq2vbe71lq72u7vjqc.apps.googleusercontent.com",
   });
 
   //IOS: 15785712342-k9bgo9hridhm3snak23achi1qgpnsdpm.apps.googleusercontent.com
