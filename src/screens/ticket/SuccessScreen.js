@@ -24,7 +24,7 @@ export default function SuccessScreen() {
             adult =info.adult;
             child = info.child;
             fee = info.fee;
-            const response = await fetch('http://172.20.10.3:3000/ticket', {
+            const response = await fetch('http://192.168.1.9/ticket', {
             method: 'POST',
             headers:
             {

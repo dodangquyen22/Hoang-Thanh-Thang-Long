@@ -36,7 +36,7 @@ const SignUpScreen = ({ navigation }) => {
 
   const sendRequest = async () => {
     try {
-      const response = await fetch('http://172.20.10.3:3000/register', {
+      const response = await fetch('http://192.168.1.9/register', {
         method: 'POST',
         headers:
         {
