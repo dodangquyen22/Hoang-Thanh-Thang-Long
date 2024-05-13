@@ -15,7 +15,6 @@ export default function TourDetail({ route }) {
     const navigation = useNavigation();
     const handlePress = (item) => {
         const nextItem = item.nextItem;
-        console.log(nextItem);
         navigation.navigate('TourDetail', { item: nextItem });
     };
 

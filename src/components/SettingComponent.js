@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { IPWifi } from '../constants';
 
 const Settings = () => {
 
@@ -44,7 +45,7 @@ const Settings = () => {
 
   const handleLoginLogout = async () => {
     try {
-      const response = await fetch('http://192.168.1.9/logout', {
+      const response = await fetch(`http://${IPWifi}:3000/logout`, {
         method: 'POST',
         headers:
         {

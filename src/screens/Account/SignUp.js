@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, TouchableOpacity, Image, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { IPWifi } from "../../constants";
 
 const SignUpScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -36,7 +37,7 @@ const SignUpScreen = ({ navigation }) => {
 
   const sendRequest = async () => {
     try {
-      const response = await fetch('http://192.168.1.9/register', {
+      const response = await fetch(`http://${IPWifi}:3000/register`, {
         method: 'POST',
         headers:
         {

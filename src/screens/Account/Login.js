@@ -2,17 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { View, TextInput, Button, Image, StyleSheet, TouchableOpacity, Text, Keyboard, TouchableWithoutFeedback, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Google from 'expo-auth-session/providers/google';
-import * as WebBrowser from 'expo-web-browser';
-import 'firebase/auth';
-import {
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithCredential,
-} from "firebase/auth";
-import { getApp, getAuth } from "../../../firebaseConfig";
-
-WebBrowser.maybeCompleteAuthSession();
+import { IPWifi } from "../../constants";
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -71,7 +61,7 @@ const LoginScreen = ({ navigation }) => {
   const handleLogin = async () => {
     // Xử lý logic đăng nhập ở đây
     try {
-      const response = await fetch('http://192.168.1.9/login', {
+      const response = await fetch(`http://${IPWifi}:3000/login`, {
         method: 'POST',
         headers:
         {

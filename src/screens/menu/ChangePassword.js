@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Dimensions, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { IPWifi } from "../../constants";
 
 export default function ChangePasswordScreen() {
     const navigation = useNavigation();
@@ -24,7 +24,7 @@ export default function ChangePasswordScreen() {
         }
         
         try {
-          const response = await fetch('http://192.168.1.9/changePass', {
+          const response = await fetch(`http://${IPWifi}:3000/changePass`, {
             method: 'POST',
             headers:
             {
