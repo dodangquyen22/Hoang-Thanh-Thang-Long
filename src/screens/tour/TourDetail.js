@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Button, StyleSheet, Alert, SafeAreaView, TextInput, Image, Dimensions, ScrollView, FlatList} from "react-native";
+import { View, Text, TouchableOpacity, Button, StyleSheet, Alert, SafeAreaView, TextInput, Image, Dimensions, ScrollView, FlatList } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -46,22 +46,22 @@ export default function TourDetail({ route }) {
                     circleLoop
                     autoplayInterval={4000}
                 />
-                <ScrollView style={{marginLeft: '3%', marginRight: '3%'}}>
-                    <View style={{marginTop: '5%'}}>
+                <ScrollView style={{ marginLeft: '3%', marginRight: '3%' }}>
+                    <View style={{ marginTop: '5%' }}>
                         <Text>{item.detail}</Text>
                     </View>
                 </ScrollView>
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={ticketStyles.icon} onPress={() => navigation.goBack()}>
-                            <Entypo name="arrow-long-left" size={50}>
-                            </Entypo>
-                        </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={ticketStyles.icon} onPress={() => navigation.goBack()}>
+                        <Entypo name="arrow-long-left" size={50}>
+                        </Entypo>
+                    </TouchableOpacity>
 
-                        {/*<TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
+                    {/*<TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
                             <Entypo name="arrow-long-right" size={50}>
                             </Entypo>
                         </TouchableOpacity>*/}
-                    </View>
+                </View>
             </View>
 
             <BottomButtonBar />
@@ -109,8 +109,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginRight: '9%',
-        margin: '3%',
+        margin: '8%',
     },
     icon: {
         textAlign: 'center',

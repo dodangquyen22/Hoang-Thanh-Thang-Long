@@ -15,6 +15,7 @@ const topMargin = ios? '': 'mt-10';
 
 export default function DestinationScreen(props) {
     const item = props.route.params;
+    const imageSrc = item.image;
     const navigation = useNavigation();
     const [isFavourite, toggleFavourite] = useState(false);
 
@@ -57,7 +58,7 @@ export default function DestinationScreen(props) {
   return (
     <View className="bg-white flex-1">
         {/* destination image */}
-        <Image source={item.image} style={{width: wp(100), height: hp(55)}} />
+        <Image source={{ uri: `${imageSrc}` }} style={{width: wp(100), height: hp(55)}} />
         <StatusBar style={'light'} />
 
         {/* back button */}
@@ -65,7 +66,7 @@ export default function DestinationScreen(props) {
             <TouchableOpacity
                 onPress={()=> {navigation.goBack(); stopText();}}
                 className="p-2 rounded-full ml-4"
-                style={{backgroundColor: 'rgba(255,255,255,0.5)'}}
+                style={{backgroundColor: '#111'}}
             >
                 <ChevronLeftIcon size={wp(7)} strokeWidth={4} color="white" />
             </TouchableOpacity>

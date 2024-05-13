@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     sliderBox: {
-        width: 400,
-        height: 200,
+        width: 466,
+        height: 233,
         left: 8,
         borderRadius: 16, // Adjust the border radius as needed
     },

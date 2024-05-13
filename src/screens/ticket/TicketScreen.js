@@ -57,18 +57,25 @@ export default function TicketScreen() {
         formData.append('amount', amount);
         formData.append('orderInfo', orderInfo);
         try {
-            const response = await fetch('http://192.168.45.7:8080/submitOrder', {
+            const response = await fetch('http://192.168.45.7:8082/submitOrder', {
               method: 'POST',
               body: formData,
             });
         
             if (response.ok) {
               let vnpayUrl = await response.text();
-              console.log('VNPay URL:', vnpayUrl);
               vnpayUrl = vnpayUrl.substring(9, vnpayUrl.length);
-              console.log('VNPay URL:', vnpayUrl);
 
               const res = await Linking.openURL(vnpayUrl);
+              if (res) {
+                // wait 5s -> navigate
+                setTimeout(() => {
+                    navigation.navigate('SuccessTicket')
+                }, 3000)
+              } else {
+                // Xử lý khi thanh toán không thành công
+                console.log('Payment failed');
+              }
 
             } else {
               console.error('Submit order failed');

@@ -105,30 +105,36 @@ const LoginScreen = ({ navigation }) => {
       style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <Ionicons name="chevron-back-circle-outline" size={32}>
-          </Ionicons>
-        </TouchableOpacity>
-        <Image source={require('../../../assets/logoLogin.png')} style={styles.logo} />
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          value={username}
-          onChangeText={text => setUsername(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry
-          value={password}
-          onChangeText={text => setPassword(text)}
-        />
-        {error ? <Text style={{color: 'red'}}>{error}</Text> : null}
-        <Button title="Đăng nhập" onPress={handleLogin} />
-        <Button title="Đăng kí" onPress={() => navigation.navigate("SignUpScreen")} />
-      </View>
-    </TouchableWithoutFeedback>
+        <View style={styles.container}>
+          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+            <Ionicons name="arrow-back" size={32}>
+            </Ionicons>
+          </TouchableOpacity>
+          <Image source={require('../../../assets/logoLogin.png')} style={styles.logo} />
+          <TextInput
+            style={styles.input}
+            placeholder="Username"
+            value={username}
+            onChangeText={text => setUsername(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry
+            value={password}
+            onChangeText={text => setPassword(text)}
+          />
+          {error ? <Text style={{ color: 'red' }}>{error}</Text> : null}
+          <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+            <View style={{ marginHorizontal: 20 }}>
+              <Button title="Đăng nhập" onPress={handleLogin} />
+            </View>
+            <View style={{ marginHorizontal: 20 }}>
+              <Button title="Đăng kí" onPress={() => navigation.navigate("SignUpScreen")} />
+            </View>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
       <TouchableOpacity
         style={{
           backgroundColor: "#4285F4",
@@ -163,7 +169,7 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     top: 50,
-    left: 40,
+    left: 0,
     zIndex: 999,
   },
   backButtonText: {
