@@ -4,6 +4,18 @@ import { View, TextInput, Button, Image, StyleSheet, TouchableOpacity, Text, Key
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IPWifi } from "../../constants";
 
+import * as Google from 'expo-auth-session/providers/google';
+import * as WebBrowser from 'expo-web-browser';
+import 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithCredential,
+} from "firebase/auth";
+import { getApp, getAuth } from "../../../firebaseConfig";
+
+WebBrowser.maybeCompleteAuthSession();
+
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
