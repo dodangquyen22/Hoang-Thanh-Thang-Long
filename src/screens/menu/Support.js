@@ -17,7 +17,7 @@ function SupportScreen() {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
-                    <Ionicons name="chevron-back-circle-outline" size={32}>
+                    <Ionicons name="arrow-back" size={32}>
                     </Ionicons>
                 </TouchableOpacity>
                 <View>

@@ -130,7 +130,7 @@ export default function UserInfoScreen() {
                     <View style={styles.phoneBox}>
                         <FontAwesome name="phone" size={20}>
                         </FontAwesome>
-                        <Text style={styles.phone}>{user.phone}</Text>
+                        <Text style={styles.phone}>0{user.phone}</Text>
                     </View>
                     <Text style={styles.bio}>
                         {userr.bio}

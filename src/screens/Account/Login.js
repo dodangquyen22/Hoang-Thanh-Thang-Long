@@ -135,7 +135,7 @@ const LoginScreen = ({ navigation }) => {
           </View>
         </View>
       </TouchableWithoutFeedback>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={{
           backgroundColor: "#4285F4",
           width: "90%",
@@ -154,7 +154,7 @@ const LoginScreen = ({ navigation }) => {
         <Text style={{ fontWeight: "bold", color: "white", fontSize: 17 }}>
           Sign In with Google
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </SafeAreaView>
   );
 };

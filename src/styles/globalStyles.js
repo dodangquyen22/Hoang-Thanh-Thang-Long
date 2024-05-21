@@ -7,7 +7,8 @@ export const globalStyles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
-        backgroundColor:'white'
+        backgroundColor:'white',
+        marginTop: 20,
     },
     text: {
         color: "black",

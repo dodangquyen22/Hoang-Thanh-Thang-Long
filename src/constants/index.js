@@ -156,6 +156,24 @@ export const eventData = [
     title: 'Tôn vinh di sản văn hóa',
     description: 'Trưng bày nhằm tôn vinh, quảng bá các giá trị văn hóa tiêu biểu của Thăng Long – Hà Nội, được chia thành các không gian nhỏ, với nhiều chủ đề riêng biệt. Đó là không gian văn hóa của 6 làng nghề tiêu biểu, gồm: Gốm Bát Tràng, khảm trai Chuyên Ngọ, nón Chuông, sơn mài Hạ Thái, mây tre đan Phú Vinh, lụa Vạn Phúc, với các sản phẩm thủ công tinh xảo, đáp ứng yêu cầu phát triển công nghiệp văn hóa từ tri thức văn hóa dân gian.',
   },
+  {
+    id: 9,
+    image: require('../../assets/images/trungbay.jpg'),
+    title: 'Tôn vinh di sản văn hóa',
+    description: 'Trưng bày nhằm tôn vinh, quảng bá các giá trị văn hóa tiêu biểu của Thăng Long – Hà Nội, được chia thành các không gian nhỏ, với nhiều chủ đề riêng biệt. Đó là không gian văn hóa của 6 làng nghề tiêu biểu, gồm: Gốm Bát Tràng, khảm trai Chuyên Ngọ, nón Chuông, sơn mài Hạ Thái, mây tre đan Phú Vinh, lụa Vạn Phúc, với các sản phẩm thủ công tinh xảo, đáp ứng yêu cầu phát triển công nghiệp văn hóa từ tri thức văn hóa dân gian.',
+  },
+  {
+    id: 10,
+    image: require('../../assets/images/trungbay.jpg'),
+    title: 'Tôn vinh di sản văn hóa',
+    description: 'Trưng bày nhằm tôn vinh, quảng bá các giá trị văn hóa tiêu biểu của Thăng Long – Hà Nội, được chia thành các không gian nhỏ, với nhiều chủ đề riêng biệt. Đó là không gian văn hóa của 6 làng nghề tiêu biểu, gồm: Gốm Bát Tràng, khảm trai Chuyên Ngọ, nón Chuông, sơn mài Hạ Thái, mây tre đan Phú Vinh, lụa Vạn Phúc, với các sản phẩm thủ công tinh xảo, đáp ứng yêu cầu phát triển công nghiệp văn hóa từ tri thức văn hóa dân gian.',
+  },
+  {
+    id: 11,
+    image: require('../../assets/images/trungbay.jpg'),
+    title: 'Tôn vinh di sản văn hóa',
+    description: 'Trưng bày nhằm tôn vinh, quảng bá các giá trị văn hóa tiêu biểu của Thăng Long – Hà Nội, được chia thành các không gian nhỏ, với nhiều chủ đề riêng biệt. Đó là không gian văn hóa của 6 làng nghề tiêu biểu, gồm: Gốm Bát Tràng, khảm trai Chuyên Ngọ, nón Chuông, sơn mài Hạ Thái, mây tre đan Phú Vinh, lụa Vạn Phúc, với các sản phẩm thủ công tinh xảo, đáp ứng yêu cầu phát triển công nghiệp văn hóa từ tri thức văn hóa dân gian.',
+  },
   // Thêm các sự kiện khác vào đây
 ];
 
@@ -163,31 +181,31 @@ export let historySearch = [
   {
     id: 1,
     title: 'Bát gốm',
-    image: require('../../assets/images/bat.jpg'),
+    image: 'https://firebasestorage.googleapis.com/v0/b/server-backend-ac3df.appspot.com/o/HoangThanh_Materials%2Fbat.jpg?alt=media&token=fe8ebe26-376e-41ee-b53c-2361fcb9725d',
     longDescription: 'Khai quật từ năm 2002, với diện tích khai quật lớn nhất từ trước đến nay, khu di tích đã phát lộ một hệ thống di tích, di vật vô cùng phong phú, đa dạng. Bên cạnh những dấu tích kiến trúc đan xen, chồng xếp lên nhau qua nhiều thời kỳ lịch sử là hàng triệu hiện vật được tìm thấy trong lòng đất huyền bí. Nhiều hơn cả là những di vật vật liệu trang trí kiến trúc cung đình cùng các đồ dùng của Hoàng cung xưa kia, minh chứng cho sự phát triển của kinh đô Thăng Long, kinh đô của quốc gia Đại Việt từ thế kỷ 11 đến thế kỷ 18'
   },
   {
     id: 2,
     title: 'Tượng',
-    image: require('../../assets/images/tuong.jpg'),
+    image: 'https://firebasestorage.googleapis.com/v0/b/server-backend-ac3df.appspot.com/o/HoangThanh_Materials%2Ftuong.jpg?alt=media&token=d6d48838-f63d-429d-b406-5831ced2a445',
     longDescription: 'Khai quật từ năm 2002, với diện tích khai quật lớn nhất từ trước đến nay, khu di tích đã phát lộ một hệ thống di tích, di vật vô cùng phong phú, đa dạng. Bên cạnh những dấu tích kiến trúc đan xen, chồng xếp lên nhau qua nhiều thời kỳ lịch sử là hàng triệu hiện vật được tìm thấy trong lòng đất huyền bí. Nhiều hơn cả là những di vật vật liệu trang trí kiến trúc cung đình cùng các đồ dùng của Hoàng cung xưa kia, minh chứng cho sự phát triển của kinh đô Thăng Long, kinh đô của quốc gia Đại Việt từ thế kỷ 11 đến thế kỷ 18'
   },
   {
     id: 3,
     title: 'Vò',
-    image: require('../../assets/images/vo.jpg'),
+    image: 'https://firebasestorage.googleapis.com/v0/b/server-backend-ac3df.appspot.com/o/HoangThanh_Materials%2Fvo.jpg?alt=media&token=4993eef9-8868-4862-8191-66f0d5020efa',
     longDescription: 'Khai quật từ năm 2002, với diện tích khai quật lớn nhất từ trước đến nay, khu di tích đã phát lộ một hệ thống di tích, di vật vô cùng phong phú, đa dạng. Bên cạnh những dấu tích kiến trúc đan xen, chồng xếp lên nhau qua nhiều thời kỳ lịch sử là hàng triệu hiện vật được tìm thấy trong lòng đất huyền bí. Nhiều hơn cả là những di vật vật liệu trang trí kiến trúc cung đình cùng các đồ dùng của Hoàng cung xưa kia, minh chứng cho sự phát triển của kinh đô Thăng Long, kinh đô của quốc gia Đại Việt từ thế kỷ 11 đến thế kỷ 18'
 
   }, {
     id: 4,
     title: 'Thạp gốm',
-    image: require('../../assets/images/thapgom.jpg'),
+    image: 'https://firebasestorage.googleapis.com/v0/b/server-backend-ac3df.appspot.com/o/HoangThanh_Materials%2Fthapgom.jpg?alt=media&token=b8d099c0-cf06-45e9-880d-a846232cebeb',
     longDescription: 'Khai quật từ năm 2002, với diện tích khai quật lớn nhất từ trước đến nay, khu di tích đã phát lộ một hệ thống di tích, di vật vô cùng phong phú, đa dạng. Bên cạnh những dấu tích kiến trúc đan xen, chồng xếp lên nhau qua nhiều thời kỳ lịch sử là hàng triệu hiện vật được tìm thấy trong lòng đất huyền bí. Nhiều hơn cả là những di vật vật liệu trang trí kiến trúc cung đình cùng các đồ dùng của Hoàng cung xưa kia, minh chứng cho sự phát triển của kinh đô Thăng Long, kinh đô của quốc gia Đại Việt từ thế kỷ 11 đến thế kỷ 18'
 
   }, {
     id: 5,
     title: 'Liễn Gốm',
-    image: require('../../assets/images/liengom.jpg'),
+    image: 'https://firebasestorage.googleapis.com/v0/b/server-backend-ac3df.appspot.com/o/HoangThanh_Materials%2Fliengom.jpg?alt=media&token=737d43fa-e564-434a-97dc-10960847f385',
     longDescription: 'Khai quật từ năm 2002, với diện tích khai quật lớn nhất từ trước đến nay, khu di tích đã phát lộ một hệ thống di tích, di vật vô cùng phong phú, đa dạng. Bên cạnh những dấu tích kiến trúc đan xen, chồng xếp lên nhau qua nhiều thời kỳ lịch sử là hàng triệu hiện vật được tìm thấy trong lòng đất huyền bí. Nhiều hơn cả là những di vật vật liệu trang trí kiến trúc cung đình cùng các đồ dùng của Hoàng cung xưa kia, minh chứng cho sự phát triển của kinh đô Thăng Long, kinh đô của quốc gia Đại Việt từ thế kỷ 11 đến thế kỷ 18'
   },
 ];

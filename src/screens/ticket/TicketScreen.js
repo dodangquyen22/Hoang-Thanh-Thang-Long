@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import DatePicker from 'react-native-date-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import BottomButtonBar from "../../components/NavigatorBottomBar";
 import { PopUp } from "../../components/PopUp";
@@ -51,13 +52,16 @@ export default function TicketScreen() {
         info.child = childTicket;
         info.fee = price * adultTicket + price * childTicket / 2;
 
-        const amount = 10000; // Số tiền đơn hàng
-        const orderInfo = "test"; // Thông tin đơn hàng
+        const amount = info.fee; // Số tiền đơn hàng
+        const orderInfo = "Mua vé tham quan hoàng thành"; // Thông tin đơn hàng
         const formData = new FormData();
+        parsedData = await AsyncStorage.getItem('userData');
+        username = JSON.parse(parsedData);
+        console.log(parsedData);
         formData.append('amount', amount);
         formData.append('orderInfo', orderInfo);
         try {
-            const response = await fetch('http://192.168.45.7:8082/submitOrder', {
+            const response = await fetch('http://192.168.45.7:8088/submitOrder', {
               method: 'POST',
               body: formData,
             });
