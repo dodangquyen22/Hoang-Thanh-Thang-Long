@@ -165,6 +165,7 @@ export default function InfoScreen() {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 20,
     flex: 1,
     alignItems: "center",
     justifyContent: "center",

@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     descriptionText: {
         fontSize: 16,
         textAlign: 'justify',
-        marginBottom: 100
     },
     image: {
         width: Dimensions.get('window').width,

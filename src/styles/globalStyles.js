@@ -3,12 +3,12 @@ import { StyleSheet, Dimensions } from "react-native";
 
 export const globalStyles = StyleSheet.create({
     container: {
+        paddingTop: 20,
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
         backgroundColor:'white',
-        marginTop: 20,
     },
     text: {
         color: "black",

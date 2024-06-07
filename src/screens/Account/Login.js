@@ -1,6 +1,8 @@
+// 
+
 import React, { useState, useEffect } from 'react';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
-import { View, TextInput, Button, Image, StyleSheet, TouchableOpacity, Text, Keyboard, TouchableWithoutFeedback, SafeAreaView } from 'react-native';
+import { View, TextInput, Button, Image, StyleSheet, TouchableOpacity, Text, Keyboard, TouchableWithoutFeedback, SafeAreaView, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IPWifi } from "../../constants";
 
@@ -20,8 +22,6 @@ const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [token, setToken] = useState("");
-  const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const auth = getAuth(getApp());
@@ -31,9 +31,6 @@ const LoginScreen = ({ navigation }) => {
     iosClientId: "15785712342-k9bgo9hridhm3snak23achi1qgpnsdpm.apps.googleusercontent.com",
     expoClientId: "15785712342-9seersljt4fogjdq2vbe71lq72u7vjqc.apps.googleusercontent.com",
   });
-
-  //IOS: 15785712342-k9bgo9hridhm3snak23achi1qgpnsdpm.apps.googleusercontent.com
-  //Android: 15785712342-b6487ks6dhhjfge93cuvdp985f36meh5.apps.googleusercontent.com
 
   useEffect(() => {
     if (response?.type == "success") {
@@ -56,7 +53,7 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     getLocalUser();
     const unsub = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -71,7 +68,7 @@ const LoginScreen = ({ navigation }) => {
   }, []);
 
   const handleLogin = async () => {
-    // Xử lý logic đăng nhập ở đây
+    setLoading(true);
     try {
       const response = await fetch(`http://${IPWifi}:3000/login`, {
         method: 'POST',
@@ -83,32 +80,27 @@ const LoginScreen = ({ navigation }) => {
       });
 
       const data = await response.json();
-      console.log(data)
       if (response.ok) {
-        // Đăng ký thành công, chuyển đến màn hình đăng nhập
-        console.log(data)
         await AsyncStorage.setItem('isLoggedIn', 'true');
         await AsyncStorage.setItem('userData', JSON.stringify(data));
         navigation.navigate('Home', { refresh: true });
       } else {
-        // Xử lý lỗi từ máy chủ
         setError(data.error);
       }
     } catch (error) {
       console.error(error);
       setError('An error occurred. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <SafeAreaView
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-    >
+    <SafeAreaView style={styles.safeArea}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back" size={32}>
-            </Ionicons>
+            <Ionicons name="arrow-back" size={32} />
           </TouchableOpacity>
           <Image source={require('../../../assets/logoLogin.png')} style={styles.logo} />
           <TextInput
@@ -124,42 +116,31 @@ const LoginScreen = ({ navigation }) => {
             value={password}
             onChangeText={text => setPassword(text)}
           />
-          {error ? <Text style={{ color: 'red' }}>{error}</Text> : null}
-          <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-            <View style={{ marginHorizontal: 20 }}>
-              <Button title="Đăng nhập" onPress={handleLogin} />
-            </View>
-            <View style={{ marginHorizontal: 20 }}>
-              <Button title="Đăng kí" onPress={() => navigation.navigate("SignUpScreen")} />
-            </View>
+          {error ? <Text style={styles.errorText}>{error}</Text> : null}
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.loginButton} onPress={handleLogin} disabled={loading}>
+              {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Đăng nhập</Text>}
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.signupButton} onPress={() => navigation.navigate("SignUpScreen")}>
+              <Text style={styles.buttonText}>Đăng kí</Text>
+            </TouchableOpacity>
           </View>
+          {/* <TouchableOpacity style={styles.googleButton} onPress={() => promptAsync()}>
+            <AntDesign name="google" size={24} color="white" />
+            <Text style={styles.googleButtonText}>Sign In with Google</Text>
+          </TouchableOpacity> */}
         </View>
       </TouchableWithoutFeedback>
-      {/* <TouchableOpacity
-        style={{
-          backgroundColor: "#4285F4",
-          width: "90%",
-          padding: 10,
-          borderRadius: 15,
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 15,
-          marginTop: 80,
-          marginBottom: 150,
-        }}
-        onPress={() => promptAsync()}
-      >
-        <AntDesign name="google" size={30} color="white" />
-        <Text style={{ fontWeight: "bold", color: "white", fontSize: 17 }}>
-          Sign In with Google
-        </Text>
-      </TouchableOpacity> */}
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -169,25 +150,71 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     top: 50,
-    left: 0,
+    left: 20,
     zIndex: 999,
   },
-  backButtonText: {
-    color: 'blue',
-    fontSize: 16,
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 32,
   },
-  // logo: {
-  //   width: 250,
-  //   height: 250,
-  //   marginBottom: 32,
-  // },
   input: {
     width: 300,
-    height: 40,
+    height: 50,
     borderColor: 'gray',
     borderWidth: 1,
     marginBottom: 16,
-    paddingHorizontal: 8,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 16,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginVertical: 20,
+  },
+  loginButton: {
+    backgroundColor: '#4285F4',
+    padding: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    marginHorizontal: 10,
+  },
+  signupButton: {
+    backgroundColor: '#34A853',
+    padding: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    marginHorizontal: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  googleButton: {
+    backgroundColor: '#DB4437',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 15,
+    borderRadius: 8,
+    width: '90%',
+    marginTop: 20,
+  },
+  googleButtonText: {
+    color: 'white',
+    fontSize: 16,
+    marginLeft: 10,
+    fontWeight: 'bold',
   },
 });
 

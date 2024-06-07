@@ -1,3 +1,5 @@
+// 
+
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, TouchableOpacity, Image, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -21,26 +23,25 @@ const SignUpScreen = ({ navigation }) => {
     }
     if (password.length < 6) {
       setError('Password must be at least 6 characters');
-      return false
+      return false;
     }
     if (phone.length < 10) {
       setError('Phone must be at least 10 characters');
-      return false
+      return false;
     }
 
     if (!validRegex.test(email)) {
       setError('Email is invalid');
-      return false
+      return false;
     }
-    return true
+    return true;
   }
 
   const sendRequest = async () => {
     try {
       const response = await fetch(`http://${IPWifi}:3000/register`, {
         method: 'POST',
-        headers:
-        {
+        headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, password, phone, email }),
@@ -49,11 +50,8 @@ const SignUpScreen = ({ navigation }) => {
       const data = await response.json();
 
       if (response.ok) {
-        // console.log(data)
-        // Đăng ký thành công, chuyển đến màn hình đăng nhập
         navigation.navigate('LoginScreen');
       } else {
-        // Xử lý lỗi từ máy chủ
         setError(data.error);
       }
     } catch (error) {
@@ -63,7 +61,7 @@ const SignUpScreen = ({ navigation }) => {
   }
 
   const handleSignUp = async () => {
-    let isValidInput = handleValidInput()
+    let isValidInput = handleValidInput();
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
@@ -72,46 +70,54 @@ const SignUpScreen = ({ navigation }) => {
     if (isValidInput) {
       sendRequest();
     }
-    
   };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      
       <View style={styles.container}>
-      <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <Ionicons name="chevron-back-circle-outline" size={32}>
-          </Ionicons>
-        </TouchableOpacity>
-        <Image source={require('../../../assets/logoLogin.png')} style={styles.logo} />
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          value={username}
-          onChangeText={text => setUsername(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry
-          value={password}
-          onChangeText={text => setPassword(text)}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Confirm Password"
-          secureTextEntry
-          value={confirmPassword}
-          onChangeText={text => setConfirmPassword(text)}
-        />
-        <TextInput style={styles.input} placeholder="phone" value={phone} onChangeText={text => setPhone(text)} />
-        <TextInput style={styles.input} placeholder="email" value={email} onChangeText={text => setEmail(text)} />
-        {error ? <Text style={styles.error}>{error}</Text> : null}
-        <Button title="Đăng kí" onPress={handleSignUp} />
+        <KeyboardAwareScrollView contentContainerStyle={styles.scrollContainer}>
+          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+            <Ionicons name="chevron-back-circle-outline" size={32} />
+          </TouchableOpacity>
+          <Image source={require('../../../assets/logoLogin.png')} style={styles.logo} />
+          <TextInput
+            style={styles.input}
+            placeholder="Username"
+            value={username}
+            onChangeText={text => setUsername(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry
+            value={password}
+            onChangeText={text => setPassword(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirm Password"
+            secureTextEntry
+            value={confirmPassword}
+            onChangeText={text => setConfirmPassword(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Phone"
+            value={phone}
+            onChangeText={text => setPhone(text)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            value={email}
+            onChangeText={text => setEmail(text)}
+          />
+          {error ? <Text style={styles.error}>{error}</Text> : null}
+          <TouchableOpacity style={styles.signUpButton} onPress={handleSignUp}>
+            <Text style={styles.buttonText}>Đăng kí</Text>
+          </TouchableOpacity>
         </KeyboardAwareScrollView>
       </View>
-      
     </TouchableWithoutFeedback>
   );
 };
@@ -119,18 +125,13 @@ const SignUpScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 16,
+    backgroundColor: '#f9f9f9',
+  },
+  scrollContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
-    
-  },
-  input: {
-    width: 300,
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 16,
-    paddingHorizontal: 8,
+    paddingBottom: 20,
   },
   backButton: {
     position: 'absolute',
@@ -138,9 +139,38 @@ const styles = StyleSheet.create({
     left: 16,
     zIndex: 999,
   },
+  logo: {
+    marginTop: 50,
+    width: 150,
+    height: 150,
+    marginBottom: 20,
+  },
+  input: {
+    width: 300,
+    height: 50,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 16,
+    paddingHorizontal: 10,
+    backgroundColor: '#fff',
+  },
   error: {
     color: 'red',
     marginBottom: 16,
+  },
+  signUpButton: {
+    backgroundColor: '#4285F4',
+    padding: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 300,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

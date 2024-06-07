@@ -32,6 +32,7 @@ export default function EventScreen() {
 
 const styles = StyleSheet.create({
     container: {
+        paddingTop: 20,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     title: {
         flexDirection: 'row',
         height: Dimensions.get('window').height * 0.08,
-        marginTop: 40,
+        marginTop: 20,
         justifyContent: 'space-between',
         textAlign: 'center'
     },
