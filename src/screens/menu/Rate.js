@@ -3,27 +3,37 @@ import { View, Text, TextInput, Button, StyleSheet, TouchableWithoutFeedback, Ke
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import BottomButtonBar from '../../components/NavigatorBottomBar';
+import StarRating from '../../components/StarRating';
 
 const ReviewScreen = () => {
     const [reviewText, setReviewText] = useState('');
+    const [starCount, setStarCount] = useState(0);
     const navigation = useNavigation();
 
     const submitReview = () => {
         // Handle review submission
+        console.log("Review Submitted:", { reviewText, starCount });
         setReviewText('');
+        setStarCount(0);
     };
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.container}>
-                <View style={styles.header}>
+            <View style={styles.header}>
                     <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
                         <Ionicons name="arrow-back" size={32} />
                     </TouchableOpacity>
-                    <Text style={styles.titleHeader}>Đánh Giá</Text>
+                    <Text style={styles.titleHeader}>Đánh giá</Text>
                 </View>
                 <View style={styles.content}>
                     <Text style={styles.title}>Nhận xét về ứng dụng</Text>
+                    <StarRating
+                        rating={starCount}
+                        setRating={setStarCount}
+                        starSize={30}
+                        starColor={'#f1c40f'}
+                    />
                     <TextInput
                         style={styles.input}
                         placeholder="Nhập nhận xét của bạn..."
@@ -32,9 +42,9 @@ const ReviewScreen = () => {
                         multiline
                     />
                     <TouchableOpacity
-                        style={[styles.button, !reviewText && styles.buttonDisabled]}
+                        style={[styles.button, (!reviewText || starCount === 0) && styles.buttonDisabled]}
                         onPress={submitReview}
-                        disabled={!reviewText}
+                        disabled={!reviewText || starCount === 0}
                     >
                         <Text style={styles.buttonText}>Gửi nhận xét</Text>
                     </TouchableOpacity>
@@ -54,15 +64,12 @@ const styles = StyleSheet.create({
     header: {
         position: 'absolute',
         flexDirection: 'row',
-        height: Dimensions.get('window').height * 0.08,
-        width: Dimensions.get('window').width * 0.98,
+        height: Dimensions.get('window').height * 0.07,
+        width: Dimensions.get('window').width,
+        paddingHorizontal: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
         marginTop: 40,
-        marginLeft: 5,
-        textAlign: 'center',
-        borderColor: 'grey',
-        borderWidth: 0,
-        borderBottomWidth: 2,
-        top: 0,
     },
     titleHeader: {
         fontSize: 24,
@@ -88,8 +95,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     input: {
+        marginTop: 50,
         width: '100%',
-        height: 150,
+        height: 100,
         borderColor: 'gray',
         borderWidth: 1,
         borderRadius: 8,

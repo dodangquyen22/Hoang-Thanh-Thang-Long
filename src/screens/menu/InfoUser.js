@@ -33,7 +33,7 @@ export default function UserInfoScreen() {
         try {
             parsedData = await AsyncStorage.getItem('userData');
             username = JSON.parse(parsedData);
-            const response = await fetch(`http://${IPWifi}:3000/viewInfo`, {
+            const response = await fetch(`http://${IPWifi}:3001/viewInfo`, {
                 method: 'POST',
                 headers:
                 {
@@ -94,14 +94,11 @@ export default function UserInfoScreen() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.icon} onPress={handleBack}>
-                    <Ionicons style={styles.icon} name="arrow-back" size={32}>
-                    </Ionicons>
-                </TouchableOpacity>
-                <View>
+                    <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
+                        <Ionicons name="arrow-back" size={32} />
+                    </TouchableOpacity>
                     <Text style={styles.titleHeader}>Thông tin cá nhân</Text>
                 </View>
-            </View>
 
             {isEditing ? (
                 <EditUserInfoWindow
@@ -150,50 +147,41 @@ export default function UserInfoScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-        padding: 20,
-    }, header: {
-        position: 'absolute',
+        backgroundColor: '#f9f9f9',
+    },
+    header: {
         flexDirection: 'row',
+        alignItems: 'center',
         height: Dimensions.get('window').height * 0.08,
-        width: Dimensions.get('window').width * 0.98,
+        width: Dimensions.get('window').width,
+        paddingHorizontal: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
         marginTop: 30,
-        marginLeft: 5,
+    },
+    icon: {
+        left: 10,
         textAlign: 'center',
-        borderColor: 'grey',
-        borderWidth: 0,
-        borderBottomWidth: 2,
-        top: 0,
-    }, titleHeader: {
+    },
+    titleHeader: {
         fontSize: 24,
         fontWeight: 'bold',
-        textAlign: 'center',
         flex: 1,
-        marginLeft: 80,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
         textAlign: 'center',
-        marginLeft: 40,
-    }, icon: {
-        textAlign: 'center',
-        marginLeft: 5
-    },
-    titleText: {
-        flex: 2,
-        color: "black",
-        fontSize: 30,
-        textAlign: 'center',
+        marginRight: 32,
     },
     content: {
-        top: 0,
-    }, phoneBox: {
+        flex: 1,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        paddingHorizontal: 20,
+        paddingTop: 20,
+    },
+    phoneBox: {
         flexDirection: 'row',
-        marginBottom: 10,
-    }, phone: {
+        marginBottom: 5,
+    },
+    phone: {
         marginLeft: 20,
         fontSize: 16,
         marginBottom: 10,
@@ -219,11 +207,11 @@ const styles = StyleSheet.create({
     },
     email: {
         fontSize: 16,
-        marginBottom: 10,
+        marginBottom: 5,
     },
     bio: {
         fontSize: 16,
-        textAlign: 'center',
+        // textAlign: 'center',
         marginBottom: 20,
     }, editButton: {
         backgroundColor: 'blue',

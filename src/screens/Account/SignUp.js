@@ -39,7 +39,7 @@ const SignUpScreen = ({ navigation }) => {
 
   const sendRequest = async () => {
     try {
-      const response = await fetch(`http://${IPWifi}:3000/register`, {
+      const response = await fetch(`http://${IPWifi}:3001/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

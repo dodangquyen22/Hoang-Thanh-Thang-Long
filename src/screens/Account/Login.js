@@ -70,7 +70,7 @@ const LoginScreen = ({ navigation }) => {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://${IPWifi}:3000/login`, {
+      const response = await fetch(`http://${IPWifi}:3001/login`, {
         method: 'POST',
         headers:
         {

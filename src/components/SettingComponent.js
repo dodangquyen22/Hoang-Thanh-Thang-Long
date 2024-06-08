@@ -45,7 +45,7 @@ const Settings = () => {
 
   const handleLoginLogout = async () => {
     try {
-      const response = await fetch(`http://${IPWifi}:3000/logout`, {
+      const response = await fetch(`http://${IPWifi}:3001/logout`, {
         method: 'POST',
         headers:
         {

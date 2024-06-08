@@ -1,9 +1,6 @@
-import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Dimensions, TouchableWithoutFeedback } from 'react-native';
-import { Keyboard } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, Button, StyleSheet, Dimensions, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 export const EditUserInfoWindow = ({ user, onSaveChanges, onCancelChanges }) => {
     const navigation = useNavigation();
@@ -11,24 +8,22 @@ export const EditUserInfoWindow = ({ user, onSaveChanges, onCancelChanges }) => 
     const [phone, setPhone] = useState(user.phone.toString());
 
     const handleSaveChanges = () => {
-        const updatedUser = { user, email, phone };
-        
+        const updatedUser = { ...user, email, phone };
         onSaveChanges(updatedUser);
     };
 
-    useEffect(() => {
-    });
+    useEffect(() => { }, []);
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.container}>
-
+                <Text style={styles.title}>Chỉnh sửa thông tin</Text>
                 <TextInput
                     style={styles.input}
                     value={email}
                     onChangeText={setEmail}
                     placeholder="Email"
-
+                    keyboardType="email-address"
                 />
                 <TextInput
                     keyboardType='numeric'
@@ -38,9 +33,9 @@ export const EditUserInfoWindow = ({ user, onSaveChanges, onCancelChanges }) => 
                     placeholder="Phone"
                 />
 
-                <View style={styles.boxButton}>
-                    <Button title="Save" onPress={handleSaveChanges} style={styles.button} />
-                    <Button title="Cancel" onPress={onCancelChanges} style={styles.button} />
+                <View style={styles.buttonContainer}>
+                    <Button title="Save" onPress={handleSaveChanges} color="#4285F4" />
+                    <Button title="Cancel" onPress={onCancelChanges} color="#EA4335" />
                 </View>
             </View>
         </TouchableWithoutFeedback>
@@ -52,28 +47,27 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         padding: 20,
-    }, title: {
+        backgroundColor: '#f9f9f9',
+    },
+    title: {
         fontSize: 24,
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20,
     },
     input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
         height: 50,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 8,
         width: Dimensions.get('window').width * 0.9,
-        marginBottom: 10,
-        paddingHorizontal: 10,
-        borderRadius: 5,
-    }, boxButton: {
+        marginBottom: 20,
+        paddingHorizontal: 15,
+        backgroundColor: 'white',
+    },
+    buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginTop: 20,
-    }, button: {
-        width: 50,
-        backgroundColor: 'blue',
-        borderRadius: 5,
-    }
+    },
 });
