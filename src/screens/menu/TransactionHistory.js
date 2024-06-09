@@ -44,10 +44,19 @@ const PurchasedTicketsScreen = ({ navigation }) => {
     fetchTickets();
   }, []);
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
   const renderTicket = ({ item }) => (
     <View style={styles.ticketContainer}>
       <Text style={styles.eventName}>Người mua: {item.name}</Text>
       <Text style={styles.ticketDetail}>Số điện thoại: {item.phone}</Text>
+      <Text style={styles.ticketDate}>Ngày đặt vé: {formatDate(item.date)}</Text>
       <Text style={styles.ticketDetail}>
         Số lượng vé người lớn: {item.adult}
       </Text>
@@ -76,6 +85,7 @@ const PurchasedTicketsScreen = ({ navigation }) => {
           renderItem={renderTicket}
           keyExtractor={(item) => item._id.toString()}
           contentContainerStyle={styles.ticketList}
+          inverted={true}
         />
       </View>
       <BottomButtonBar />
@@ -86,7 +96,7 @@ const PurchasedTicketsScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#f8f8f8",
   },
   header: {
     flexDirection: "row",
@@ -111,30 +121,41 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    padding: 15,
+    marginBottom: 60,
   },
   errorText: {
     color: "red",
     textAlign: "center",
     marginBottom: 20,
+    fontSize: 16,
   },
   ticketList: {
     flexGrow: 1,
   },
   ticketContainer: {
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#fff",
     borderRadius: 10,
     padding: 15,
     marginBottom: 10,
     borderColor: "#ddd",
     borderWidth: 1,
+    elevation: 1,
   },
   eventName: {
     fontSize: 18,
     fontWeight: "bold",
+    color: "#333",
     marginBottom: 5,
   },
   ticketDetail: {
     fontSize: 16,
+    color: "#555",
+    marginBottom: 3,
+  },
+  ticketDate: {
+    fontSize: 16,
+    color: "#555",
     marginBottom: 3,
   },
 });
