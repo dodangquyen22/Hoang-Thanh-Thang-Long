@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   View,
   Text,
@@ -15,6 +15,7 @@ import { IPWifi } from "../../constants";
 const PurchasedTicketsScreen = ({ navigation }) => {
   const [dataTicket, setDataTicket] = useState([]);
   const [error, setError] = useState("");
+  const flatListRef = useRef(null);
 
   const fetchTickets = async () => {
     try {
@@ -30,7 +31,7 @@ const PurchasedTicketsScreen = ({ navigation }) => {
 
       const data = await response.json();
       if (response.ok) {
-        setDataTicket(data);
+        setDataTicket(data.reverse());
       } else {
         setError(data.error);
       }
@@ -43,6 +44,12 @@ const PurchasedTicketsScreen = ({ navigation }) => {
   useEffect(() => {
     fetchTickets();
   }, []);
+
+  useEffect(() => {
+    if (flatListRef.current && dataTicket.length > 0) {
+      flatListRef.current.scrollToEnd({ animated: false });
+    }
+  }, [dataTicket]);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -81,11 +88,11 @@ const PurchasedTicketsScreen = ({ navigation }) => {
       <View style={styles.content}>
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
         <FlatList
+          ref={flatListRef}
           data={dataTicket}
           renderItem={renderTicket}
           keyExtractor={(item) => item._id.toString()}
           contentContainerStyle={styles.ticketList}
-          inverted={true}
         />
       </View>
       <BottomButtonBar />
