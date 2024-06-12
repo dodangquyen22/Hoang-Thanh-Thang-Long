@@ -5,80 +5,86 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { Linking } from 'react-native';
 
-function SupportScreen() {
-    // Hàm xử lý sự kiện khi người dùng nhấn vào nút gọi hotline
-    function callHotline() {
+const SupportScreen = () => {
+    const navigation = useNavigation();
+
+    const callHotline = () => {
         const hotlineNumber = '0123456789'; // Số hotline bạn muốn gọi
         Linking.openURL(`tel:${hotlineNumber}`);
-    }
-    const navigation = useNavigation();
+    };
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
-                    <Ionicons name="chevron-back-circle-outline" size={32}>
-                    </Ionicons>
+                    <Ionicons name="arrow-back" size={32} />
                 </TouchableOpacity>
-                <View>
-                    <Text style={styles.titleHeader}>Hỗ trợ</Text>
-                </View>
+                <Text style={styles.titleHeader}>Hỗ trợ</Text>
             </View>
 
-            <Text style={styles.description}>
-                Liên hệ với chúng tôi qua hotline để được hỗ trợ.
-            </Text>
-            <Button
-                title="Gọi hotline: 08866886688"
-                onPress={callHotline}
-            />
+            <View style={styles.content}>
+                <Text style={styles.description}>
+                    Liên hệ với chúng tôi qua hotline để được hỗ trợ.
+                </Text>
+                <TouchableOpacity style={styles.hotlineButton} onPress={callHotline}>
+                    <Text style={styles.hotlineText}>Gọi hotline: 08866886688</Text>
+                </TouchableOpacity>
+            </View>
             <BottomButtonBar />
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#f9f9f9',
+        paddingTop: 60,
+    },
+    header: {
+        position: 'absolute',
+        flexDirection: 'row',
+        height: Dimensions.get('window').height * 0.07,
+        width: Dimensions.get('window').width,
+        paddingHorizontal: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
+        marginTop: 40,
+    },
+    icon: {
+        left: 10,
+        textAlign: 'center',
+    },
+    titleHeader: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        flex: 1,
+        textAlign: 'center',
+        marginRight: 32, // To offset the back icon
+    },
+    content: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: 20,
-    }, header: {
-        position: 'absolute',
-        flexDirection: 'row',
-        height: Dimensions.get('window').height * 0.08,
-        width: Dimensions.get('window').width * 0.98,
-        marginTop: 30,
-        marginLeft: 5,
-        textAlign: 'center',
-        borderColor: 'grey',
-        borderWidth: 0,
-        borderBottomWidth: 2,
-        top: 0,
-    }, icon: {
-        textAlign: 'center',
-    }, titleHeader: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginLeft: 125,
-    },
-    titleText: {
-        flex: 2,
-        color: "black",
-        fontSize: 30,
-        fontWeight: "bold",
-        textAlign: 'center',
-    }, title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginLeft: 125,
+        paddingBottom: 100,
     },
     description: {
-        fontSize: 16,
+        fontSize: 20,
         marginBottom: 20,
         textAlign: 'center',
+    },
+    hotlineButton: {
+        padding: 15,
+        borderRadius: 8,
+        backgroundColor: '#4285F4',
+        alignItems: 'center',
+        width: '100%',
+    },
+    hotlineText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
     },
 });
 

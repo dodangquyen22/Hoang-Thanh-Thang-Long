@@ -8,6 +8,8 @@ import { destinationData } from '../constants';
 export default function Categories() {
   const navigation = useNavigation();
     const handlePress = (buttonName, data) => {
+        console.log(data)
+        console.log(buttonName)
         navigation.navigate(buttonName, data)
     }
   return (

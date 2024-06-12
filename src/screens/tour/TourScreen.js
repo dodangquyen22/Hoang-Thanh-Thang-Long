@@ -1,9 +1,7 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Button, StyleSheet, Alert, SafeAreaView, TextInput, Image, Dimensions, ScrollView, FlatList} from "react-native";
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image, Dimensions, FlatList, Button } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
-
 import BottomButtonBar from "../../components/NavigatorBottomBar";
 import SlideTour from "../../components/SlideTour.js";
 import { PopUp } from "../../components/PopUp";
@@ -25,7 +23,7 @@ export default function TourScreen() {
                 style={styles.imageButton}
                 source={item.image}
             />
-            <View>
+            <View style={styles.tourButtonTextContainer}>
                 <Text style={styles.titleButton}>{item.title}</Text>
                 <TouchableOpacity onPress={() => handlePress('TourDetail', item)}>
                     <Text style={styles.textButton}>Xem thêm</Text>
@@ -35,104 +33,104 @@ export default function TourScreen() {
     );
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.title}>
                 <TouchableOpacity style={ticketStyles.icon} onPress={() => navigation.goBack()}>
-                    <Ionicons name="chevron-back-circle-outline" size={40}>
-                    </Ionicons>
+                    <Ionicons name="chevron-back-circle-outline" size={40} />
                 </TouchableOpacity>
                 <Text style={ticketStyles.titleText}>Tour</Text>
                 <TouchableOpacity style={ticketStyles.icon} onPress={() => setHelpVisible(!isHelpVisible)}>
-                    <Ionicons style={ticketStyles.icon} name="information-circle-outline" size={40}>
-                    </Ionicons>
+                    <Ionicons name="information-circle-outline" size={40} />
                 </TouchableOpacity>
             </View>
 
-            <ScrollView showsVerticalScrollIndicator={false} style ={{height: 300}}>
-                <SlideTour />
-            </ScrollView>
-                <Text style={styles.subTitle}>Danh sách tour</Text>
-                <FlatList
-                    data={data}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id.toString()}
-                    style={styles.tourList}
-                />
-                    <BottomButtonBar />
+            <FlatList
+                data={[{ key: 'slider' }, ...data]}
+                renderItem={({ item }) =>
+                    item.key === 'slider' ? (
+                        <SlideTour />
+                    ) : (
+                        renderItem({ item })
+                    )
+                }
+                keyExtractor={(item, index) => index.toString()}
+                ListHeaderComponent={() => <Text style={styles.subTitle}>Danh sách tour</Text>}
+                contentContainerStyle={styles.tourListContent}
+            />
+
+            <BottomButtonBar />
 
             <PopUp isVisible={isHelpVisible}>
                 <PopUp.Container>
                     <PopUp.Header title="Hướng dẫn" />
                     <PopUp.Body>
-                        <Text style={ticketStyles.popText}>Click Xem thêm hoặc ảnh tương ứng trên đầu trang để xem thông tin chi tiết các tour tham quan!</Text>
+                        <Text style={ticketStyles.popText}>
+                            Click Xem thêm hoặc ảnh tương ứng trên đầu trang để xem thông tin chi tiết các tour tham quan!
+                        </Text>
                     </PopUp.Body>
                     <PopUp.Footer>
                         <Button title="Quay lại" onPress={() => setHelpVisible(!isHelpVisible)} />
                     </PopUp.Footer>
                 </PopUp.Container>
-            </PopUp>            
-        </View>
-    )
+            </PopUp>
+        </SafeAreaView>
+    );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'flex-start',
-        flexDirection: 'column',
+        backgroundColor: '#fff',
     },
     title: {
         flexDirection: 'row',
         height: Dimensions.get('window').height * 0.08,
-        width: Dimensions.get('window').width * 0.98,
+        width: '100%',
         marginTop: 60,
-        marginLeft: 5,
         justifyContent: 'space-between',
-        textAlign: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 10,
     },
     subTitle: {
         fontSize: 28,
         fontWeight: "bold",
         textAlign: 'center',
-//        color: '#a16b56',
-        marginTop: '5%',
-    },
-    tourContainer: {
-        justifyContent: 'flex-start',
-        margin: '5%',
+        marginTop: 20,
+        marginBottom: 10,
     },
     tourButton: {
         flexDirection: 'row',
-        backgroundColor: 'rgb(232,232,232)',
+        backgroundColor: '#e8e8e8',
         shadowColor: 'black',
         elevation: 5,
         borderRadius: 15,
-        height: Dimensions.get('window').height * 0.08,
-        marginBottom: '10%',
+        height: Dimensions.get('window').height * 0.1,
+        marginVertical: 10,
+        padding: 10,
+        alignItems: 'center',
+    },
+    tourButtonTextContainer: {
+        marginLeft: 10,
+        justifyContent: 'center',
+        flex: 1,
     },
     titleButton: {
         color: 'black',
         fontWeight: 'bold',
-        fontSize: 14,
-        marginLeft: '2%',
-        marginTop: '4%',
-        marginBottom: '4%',
-        width: Dimensions.get('window').width * 0.65,
-//        flexWrap: 'wrap',
+        fontSize: 16,
     },
     textButton: {
         fontStyle: 'italic',
         textDecorationLine: 'underline',
         textAlign: 'right',
+        color: '#1E90FF',
     },
     imageButton: {
         width: Dimensions.get('window').width * 0.2,
-        height: Dimensions.get('window').height * 0.07,
-        borderRadius: 15,
-        margin: '1%',
+        height: Dimensions.get('window').height * 0.1,
+        borderRadius: 10,
     },
-    tourList: {
-        width: Dimensions.get('window').width * 0.9,
-        margin:'5%',
+    tourListContent: {
+        paddingBottom: 100,
     },
 });

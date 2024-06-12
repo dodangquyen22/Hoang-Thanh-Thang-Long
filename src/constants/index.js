@@ -1,7 +1,8 @@
 // const RNFS = require('react-native-fs')
 // const file1Path = RNFS.DocumentDirectoryPath + './data/cotco.txt';
 // const data1 = await RNFS.readFile(file1Path, 'utf8');
-export const IPWifi = '192.168.45.7';
+// export const IPWifi = '192.168.45.7';
+export const IPWifi = '192.168.1.25';
 
 
 export const destinationData = [
@@ -87,23 +88,11 @@ export const destinationData = [
   },
   {
     title: 'Di tích khảo cổ',
-    longDescription: `Thăng Long – Kinh đô của nước Đại Việt đã từng rất phồn thịnh vào các thế kỉ 11 – 15, dưới triều đại Lý – Trần – Lê Sơ. Nhưng do nhiều nguyên nhân và biến cố lịch sử, những dấu tích về một Kinh đô Thăng Long xưa đến nay chỉ còn lại những hoài niệm về một Kinh đô đẹp đẽ, tráng lệ và thanh lịch, khiến cho chúng ta hôm nay không thể không lần tìm, khôi phục lại.
-        Toàn bộ dấu ấn về diện mạo của Kinh đô Thăng Long đến nay dường như chỉ còn lưu lại trên mặt đất từng đoạn thành của vòng thành ngoài. May mắn thay năm 2002 – 2003, một cuộc khai quật khảo cổ với qui mô lớn ở trung tâm Hoàng thành Thăng Long đã lộ ra nhiều di tích và di vật phong phú, đa dạng để từ đó cho chúng ta hiệu sự phát triểu liên tục của lịch sử qua các triều đại ở Thăng Long – Hà Nội.
-        Cuộc khai quật khảo cổ học tại 18 Hoàng Diệu là cuộc khai quật khảo cổ học lớn nhất Việt Nam từ trước tới nay, được tiến hành từ tháng 12 năm  2002, mục đích chuẩn bị để xây nhà Quốc hội mới. Khu khai quật khảo cổ học này thuộc địa chỉ 18 Hoàng Diệu, quận Ba Đình, được Viện khảo cổ học phân tích làm 4 khu, đặt tên là A, B, C, D.
-        Tại các khu vực này đều đã phát hiện được rất nhiều các loại hình di tích kiến trúc và di vật có niên đại xen lẫn nhau, chồng xếp lên nhau qua suốt 1300 năm, bắt đầu từ thời Đại La (thế kỉ 7 – 9), qua các thời Đinh – Tiền Lê (thế kỉ 10), thời Lý (1009 – 1225), Trần (1226 – 1400), Hồ (1400 – 1407), Lê sơ (1428 – 1527), Mạc (1527 – 1592), Lê Trung Hưng (1592 – 1789) và Nguyễn (1802 – 1945). Trên thế giới rất hiếm có Thủ đô một nước mà trong long đất còn bảo tồn được một quần thể di tích, di vật mang bề dày lịch sử – văn hóa dài lâu và có các tầng văn hóa chồng xếp, nối tiếp nhau một cách khá lien tục như thế. Đây là một đặc điểm nổi bật, góp phần tạo nên giá trị  to lớn và tính độc đáo của khu di tích.
-        Lớp dưới cùng là hệ thống kiến trúc thuộc thời Tiền Thăng Long hay còn gọi là thời An Nam đô hộ phủ hoặc Đại La, thể hiện rõ qua hệ thong các cột gỗ, các nền móng kiến trúc, đường cống tiêu thoát nước, giếng nước và di vật như gạch “Giang Tây quân”, ngồi đầu ngói ống trang trí hình thú thần, mặt hề và nhiều đồ gốm sứ có niên đại thế kỉ 7 – 9.
-        Lớp trên kiến trúc thời Đại La là dấu vết kiến trúc thời Lý – Trần (thế kỉ 11 – 14) biểu hiện rõ qua hệ thống mặt bằng kiến trúc có các trụ móng sỏi kê chân cột, các lớp nền gạch, chân tảng đá hoa sen, sân gạch, đường cống thoát nước, đặc biệt là các loại hình di vật trang trí tên mái kiến trúc có kích thước to lớn và được trang trí cầu kì, tinh xảo. Một số vị trí có dấu tích văn hóa thời Đinh – Tiền Lê (thế kỉ 10).
-        Phía trên cùng là lớp kiến trúc thời Lê (thế kỉ 15 – 18) với dấu tích của các nền kiến trúc xây bằng gạch vồ, hệ thống giếng nước, đặc biệt là các loại ngói thanh lưu ly, hoàng lưu ly trang trí rồng 5 móng chuyên dùng để lợp trên mái cung điện của nhà vua và các loại đồ sứ ngự dụng dành riêng cho nhà vua. Một số vị trí có dấu tích văn hoá thời Nguyễn (thế kỉ 19 – 20) nhưng mờ nhạt không rõ ràng.
-        Những lớp đất mang dấu ấn của đủ hết các thời kì lịch sử trong vòng 1300 năm qua, lại có diễn biến theo trật tự và liên tục không gián đoạn, đặc biệt là có vị trí ở trung tâm của Hoàng Thành và Cấm Thành Thăng Long. Khu vực này là một tài sản vô giá của lịch sử và văn hóa Việt Nam nói chung, và của lịch sử – văn hóa Thăng Long – Hà Nội nói riêng.
-        Những dấu tích các công trình kiến trúc tìm thấy tại khu khảo cổ học này như thế nào?
-        Khu A nằm giáp đường Hoàng Diệu, đây là khu vực đã phát hiện được nhiều dấu tích kiến trúc quan trọng, tiêu biểu như dấu tích “kiến trúc nhiều gian” thuộc niên đại thời Lý – Trần, xuất lộ trong khu vực có chiều dài khoảng hơn 70m, rộng 18m thể hiện rất rõ qua hệ thống 40 móng trụ sỏi kê chân tảng cột, phân bố thành 10 hàng, mỗi hang 4 trụ với 9 gian nhà. Dấu tích này nằm ở  Phía Bắc của khu khảo cổ.
-        Phía Tây của kiến trúc này có hệ thống 11 cụm nền móng của loại hình kiến trúc nhỏ, được suy đoán là của 11 tòa “lầu lục giác”, chạy theo hướng Bắc – Nam dài 82m. Những lầu nhỏ có thể là lầu thưởng ngoạn, là loại hình kiến trúc rất độc đáo trong các kinh thành cổ châu Á, tạo nên cảnh đẹp cho khuôn viên của quần thể kiến trúc cung điện lớn nằm trong khu vực.
-        Đầu phía Nam của khu A có dấu tích nền nhà của hai đơn nguyên kiến trúc có qui mô lớn, còn nguyên vẹn với hệ thống chân tảng đá hoa sen cùng sân (sân trước, sân sau) và thềm gạch có niên đại thuộc thời Lý – Trần.
-        Khu B nằm tiếp giáp và song song với khu A. Khu vực này đã tìm thấy rất nhiều dấu tích nền móng kiến trúc thời Lý – Trần có kích thước lớn với kết cấu nhiều gian, có kĩ thuật xây dựng và gia cố tương tự như khu A. Phía Bắc khu vực này, tại hố B16 tìm thấy một phần mặt bằng của một đơn nguyên kiến trúc thời Trần với những chân tảng đá hoa sen kê chân cột có kích thước lớn (đường kính cột khoảng 52cm) còn đặt ngiueen ở vị trí ban đầu.
-        Khu C nằm cạnh khu B, liền kề với khuôn viên của Hội trường Ba Đình. Khu vực này mới khai quật với 5 hố đào. Tuy mới khai quật ở diện tích nhỏ và chưa khai quật xong nhưng tại hố thám sát C3 đã tìm thấy dấu vết kiến trúc thời Lý với các hệ thống móng trụ kê cột lớn hình vuông được gia cố bằng sỏi, gạch và hệ thống cọc, cột kè bằng gỗ.
-        Khu D nằm ở vị trí Trung tâm Thể thao Ba Đình, cạnh đường Độc Lập và ở bên cạnh khuôn viên Hội trường Ba Đình. Khu vực này đã khai quật 7 hố (D1 – D7). Tại khu vực hố D4 – D6 có các nền móng kiến trúc của nhiều thời kì nằm xếp lên nhau tương tự như ở khu B. Trong đó, có một mặt bằng của kiến trúc thời Lý – Trần được nhận biết rất rõ ràng qua hệ thống các hang trụ sỏi kê chân cột, xuất lộ trong diện tích gần 450m2 với 7 gian nhà (5 gian 2 chái). Trong long kiến trúc này đã tìm thấy một số di vật rất trong trong như mảnh lá vàng trang trí hình rồng thời Lý, những mảnh ngói in chữ “Hoàng Môn thự dận giám tạo” (thời Trần) và “Kim Quang điện” (thời Lê), cho biết khu vực này xưa có điện Kim Quang và Hoàng Môn thự.
-        Những phát hiện của khảo cổ học về Khu Di tích Hoàng thành Thăng Long tại 18 Hoàng Diệu được các nhà khoa học trong nước và quốc tế đánh giá cao, coi đây là những phát hiện quan trọng có giá trị hàng đầu về lịch sử văn hóa của dân tộc, góp phần nâng cao vị thế của Thăng Long – Hà Nội và lòng tự hào về lịch sử dân tộc Việt Nam.
-        
+    longDescription: `Thăng Long, kinh đô của Đại Việt dưới triều đại Lý – Trần – Lê Sơ (thế kỉ 11 – 15), từng rất phồn thịnh nhưng chỉ còn lại những dấu tích mờ nhạt do biến cố lịch sử. Một cuộc khai quật lớn năm 2002 – 2003 tại trung tâm Hoàng thành Thăng Long đã phát hiện nhiều di tích, di vật phong phú, cho thấy sự phát triển liên tục của Thăng Long qua các thời kỳ từ Đại La (thế kỉ 7 – 9), Đinh – Tiền Lê (thế kỉ 10), Lý (1009 – 1225), Trần (1226 – 1400), Hồ (1400 – 1407), Lê Sơ (1428 – 1527), Mạc (1527 – 1592), Lê Trung Hưng (1592 – 1789) và Nguyễn (1802 – 1945).
+
+    Khu khai quật tại 18 Hoàng Diệu, quận Ba Đình, được phân thành bốn khu A, B, C, D, với nhiều phát hiện quan trọng. Khu A có dấu tích "kiến trúc nhiều gian" thời Lý – Trần với hệ thống móng trụ sỏi kê chân cột. Khu B có nhiều dấu tích nền móng kiến trúc thời Lý – Trần. Khu C, liền kề khu B, có dấu vết kiến trúc thời Lý. Khu D có các nền móng kiến trúc nhiều thời kỳ chồng xếp lên nhau.
+    
+    Những phát hiện này được đánh giá cao bởi các nhà khoa học, nâng cao vị thế và lòng tự hào về lịch sử văn hóa Thăng Long – Hà Nội và Việt Nam.
         `,
     image: 'https://firebasestorage.googleapis.com/v0/b/hoang-thanh-thang-long.appspot.com/o/images%2FDitich1.png?alt=media&token=e0082bac-63f1-472f-89cc-e9642f8b6bec'
   },
@@ -156,6 +145,24 @@ export const eventData = [
     title: 'Tôn vinh di sản văn hóa',
     description: 'Trưng bày nhằm tôn vinh, quảng bá các giá trị văn hóa tiêu biểu của Thăng Long – Hà Nội, được chia thành các không gian nhỏ, với nhiều chủ đề riêng biệt. Đó là không gian văn hóa của 6 làng nghề tiêu biểu, gồm: Gốm Bát Tràng, khảm trai Chuyên Ngọ, nón Chuông, sơn mài Hạ Thái, mây tre đan Phú Vinh, lụa Vạn Phúc, với các sản phẩm thủ công tinh xảo, đáp ứng yêu cầu phát triển công nghiệp văn hóa từ tri thức văn hóa dân gian.',
   },
+  {
+    id: 9,
+    image: require('../../assets/images/trungbay.jpg'),
+    title: 'Tôn vinh di sản văn hóa',
+    description: 'Trưng bày nhằm tôn vinh, quảng bá các giá trị văn hóa tiêu biểu của Thăng Long – Hà Nội, được chia thành các không gian nhỏ, với nhiều chủ đề riêng biệt. Đó là không gian văn hóa của 6 làng nghề tiêu biểu, gồm: Gốm Bát Tràng, khảm trai Chuyên Ngọ, nón Chuông, sơn mài Hạ Thái, mây tre đan Phú Vinh, lụa Vạn Phúc, với các sản phẩm thủ công tinh xảo, đáp ứng yêu cầu phát triển công nghiệp văn hóa từ tri thức văn hóa dân gian.',
+  },
+  {
+    id: 10,
+    image: require('../../assets/images/trungbay.jpg'),
+    title: 'Tôn vinh di sản văn hóa',
+    description: 'Trưng bày nhằm tôn vinh, quảng bá các giá trị văn hóa tiêu biểu của Thăng Long – Hà Nội, được chia thành các không gian nhỏ, với nhiều chủ đề riêng biệt. Đó là không gian văn hóa của 6 làng nghề tiêu biểu, gồm: Gốm Bát Tràng, khảm trai Chuyên Ngọ, nón Chuông, sơn mài Hạ Thái, mây tre đan Phú Vinh, lụa Vạn Phúc, với các sản phẩm thủ công tinh xảo, đáp ứng yêu cầu phát triển công nghiệp văn hóa từ tri thức văn hóa dân gian.',
+  },
+  {
+    id: 11,
+    image: require('../../assets/images/trungbay.jpg'),
+    title: 'Tôn vinh di sản văn hóa',
+    description: 'Trưng bày nhằm tôn vinh, quảng bá các giá trị văn hóa tiêu biểu của Thăng Long – Hà Nội, được chia thành các không gian nhỏ, với nhiều chủ đề riêng biệt. Đó là không gian văn hóa của 6 làng nghề tiêu biểu, gồm: Gốm Bát Tràng, khảm trai Chuyên Ngọ, nón Chuông, sơn mài Hạ Thái, mây tre đan Phú Vinh, lụa Vạn Phúc, với các sản phẩm thủ công tinh xảo, đáp ứng yêu cầu phát triển công nghiệp văn hóa từ tri thức văn hóa dân gian.',
+  },
   // Thêm các sự kiện khác vào đây
 ];
 
@@ -163,31 +170,31 @@ export let historySearch = [
   {
     id: 1,
     title: 'Bát gốm',
-    image: require('../../assets/images/bat.jpg'),
+    image: 'https://firebasestorage.googleapis.com/v0/b/server-backend-ac3df.appspot.com/o/HoangThanh_Materials%2Fbat.jpg?alt=media&token=fe8ebe26-376e-41ee-b53c-2361fcb9725d',
     longDescription: 'Khai quật từ năm 2002, với diện tích khai quật lớn nhất từ trước đến nay, khu di tích đã phát lộ một hệ thống di tích, di vật vô cùng phong phú, đa dạng. Bên cạnh những dấu tích kiến trúc đan xen, chồng xếp lên nhau qua nhiều thời kỳ lịch sử là hàng triệu hiện vật được tìm thấy trong lòng đất huyền bí. Nhiều hơn cả là những di vật vật liệu trang trí kiến trúc cung đình cùng các đồ dùng của Hoàng cung xưa kia, minh chứng cho sự phát triển của kinh đô Thăng Long, kinh đô của quốc gia Đại Việt từ thế kỷ 11 đến thế kỷ 18'
   },
   {
     id: 2,
     title: 'Tượng',
-    image: require('../../assets/images/tuong.jpg'),
+    image: 'https://firebasestorage.googleapis.com/v0/b/server-backend-ac3df.appspot.com/o/HoangThanh_Materials%2Ftuong.jpg?alt=media&token=d6d48838-f63d-429d-b406-5831ced2a445',
     longDescription: 'Khai quật từ năm 2002, với diện tích khai quật lớn nhất từ trước đến nay, khu di tích đã phát lộ một hệ thống di tích, di vật vô cùng phong phú, đa dạng. Bên cạnh những dấu tích kiến trúc đan xen, chồng xếp lên nhau qua nhiều thời kỳ lịch sử là hàng triệu hiện vật được tìm thấy trong lòng đất huyền bí. Nhiều hơn cả là những di vật vật liệu trang trí kiến trúc cung đình cùng các đồ dùng của Hoàng cung xưa kia, minh chứng cho sự phát triển của kinh đô Thăng Long, kinh đô của quốc gia Đại Việt từ thế kỷ 11 đến thế kỷ 18'
   },
   {
     id: 3,
     title: 'Vò',
-    image: require('../../assets/images/vo.jpg'),
+    image: 'https://firebasestorage.googleapis.com/v0/b/server-backend-ac3df.appspot.com/o/HoangThanh_Materials%2Fvo.jpg?alt=media&token=4993eef9-8868-4862-8191-66f0d5020efa',
     longDescription: 'Khai quật từ năm 2002, với diện tích khai quật lớn nhất từ trước đến nay, khu di tích đã phát lộ một hệ thống di tích, di vật vô cùng phong phú, đa dạng. Bên cạnh những dấu tích kiến trúc đan xen, chồng xếp lên nhau qua nhiều thời kỳ lịch sử là hàng triệu hiện vật được tìm thấy trong lòng đất huyền bí. Nhiều hơn cả là những di vật vật liệu trang trí kiến trúc cung đình cùng các đồ dùng của Hoàng cung xưa kia, minh chứng cho sự phát triển của kinh đô Thăng Long, kinh đô của quốc gia Đại Việt từ thế kỷ 11 đến thế kỷ 18'
 
   }, {
     id: 4,
     title: 'Thạp gốm',
-    image: require('../../assets/images/thapgom.jpg'),
+    image: 'https://firebasestorage.googleapis.com/v0/b/server-backend-ac3df.appspot.com/o/HoangThanh_Materials%2Fthapgom.jpg?alt=media&token=b8d099c0-cf06-45e9-880d-a846232cebeb',
     longDescription: 'Khai quật từ năm 2002, với diện tích khai quật lớn nhất từ trước đến nay, khu di tích đã phát lộ một hệ thống di tích, di vật vô cùng phong phú, đa dạng. Bên cạnh những dấu tích kiến trúc đan xen, chồng xếp lên nhau qua nhiều thời kỳ lịch sử là hàng triệu hiện vật được tìm thấy trong lòng đất huyền bí. Nhiều hơn cả là những di vật vật liệu trang trí kiến trúc cung đình cùng các đồ dùng của Hoàng cung xưa kia, minh chứng cho sự phát triển của kinh đô Thăng Long, kinh đô của quốc gia Đại Việt từ thế kỷ 11 đến thế kỷ 18'
 
   }, {
     id: 5,
     title: 'Liễn Gốm',
-    image: require('../../assets/images/liengom.jpg'),
+    image: 'https://firebasestorage.googleapis.com/v0/b/server-backend-ac3df.appspot.com/o/HoangThanh_Materials%2Fliengom.jpg?alt=media&token=737d43fa-e564-434a-97dc-10960847f385',
     longDescription: 'Khai quật từ năm 2002, với diện tích khai quật lớn nhất từ trước đến nay, khu di tích đã phát lộ một hệ thống di tích, di vật vô cùng phong phú, đa dạng. Bên cạnh những dấu tích kiến trúc đan xen, chồng xếp lên nhau qua nhiều thời kỳ lịch sử là hàng triệu hiện vật được tìm thấy trong lòng đất huyền bí. Nhiều hơn cả là những di vật vật liệu trang trí kiến trúc cung đình cùng các đồ dùng của Hoàng cung xưa kia, minh chứng cho sự phát triển của kinh đô Thăng Long, kinh đô của quốc gia Đại Việt từ thế kỷ 11 đến thế kỷ 18'
   },
 ];

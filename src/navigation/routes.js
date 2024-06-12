@@ -41,12 +41,12 @@ function AppNavigation() {
         <Stack.Screen name="SuccessTicket" component={SuccessScreen} />
         <Stack.Screen name="Tour" component={TourScreen} />
         <Stack.Screen name="TourDetail" component={TourDetail} />
-        {/* <Stack.Screen name="EventDetails" component={EventDetails} /> */}
-        {/* <Stack.Screen name="InfoUser" component={InfoUserScreen} /> */}
-        {/* <Stack.Screen name="Support" component={SupportScreen} /> */}
-        {/* <Stack.Screen name="Rate" component={ReviewScreen} /> */}
-        {/* <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} /> */}
-        {/* <Stack.Screen name="TransactionHistory" component={TransactionHistoryScreen} /> */}
+        <Stack.Screen name="EventDetails" component={EventDetails} />
+        <Stack.Screen name="InfoUser" component={InfoUserScreen} />
+        <Stack.Screen name="Support" component={SupportScreen} />
+        <Stack.Screen name="Rate" component={ReviewScreen} />
+        <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
+        <Stack.Screen name="TransactionHistory" component={TransactionHistoryScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="Destination" component={DestinationScreen}></Stack.Screen>

@@ -1,49 +1,56 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableWithoutFeedback, Keyboard, TouchableOpacity } from 'react-native';
-import { Dimensions } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableWithoutFeedback, Keyboard, TouchableOpacity, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import BottomButtonBar from '../../components/NavigatorBottomBar';
+import StarRating from '../../components/StarRating';
 
-
-function ReviewScreen() {
+const ReviewScreen = () => {
     const [reviewText, setReviewText] = useState('');
+    const [starCount, setStarCount] = useState(0);
     const navigation = useNavigation();
 
-    // Hàm xử lý sự kiện khi người dùng nhấn nút Gửi nhận xét
-    function submitReview() {
-        // Gửi nhận xét đến máy chủ hoặc lưu trữ dữ liệu
-        // Ở đây bạn có thể thêm mã xử lý để gửi nhận xét đến máy chủ hoặc lưu trữ dữ liệu
-
-        // Xóa nội dung nhận xét sau khi gửi thành công
+    const submitReview = () => {
+        // Handle review submission
+        console.log("Review Submitted:", { reviewText, starCount });
         setReviewText('');
-    }
+        setStarCount(0);
+    };
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.container}>
-                <View style={styles.header}>
+            <View style={styles.header}>
                     <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
-                        <Ionicons name="arrow-back" size={28} />
+                        <Ionicons name="arrow-back" size={32} />
                     </TouchableOpacity>
-                    <Text style={styles.titleHeader}>Rate</Text>
+                    <Text style={styles.titleHeader}>Đánh giá</Text>
                 </View>
-                <Text style={styles.title}>Nhận xét về ứng dụng</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Nhập nhận xét của bạn..."
-                    value={reviewText}
-                    onChangeText={text => setReviewText(text)}
-                    multiline
-                />
-                <Button
-                    title="Gửi nhận xét"
-                    onPress={submitReview}
-                    disabled={!reviewText} // Không cho phép gửi nếu không có nội dung nhận xét
-                />
+                <View style={styles.content}>
+                    <Text style={styles.title}>Nhận xét về ứng dụng</Text>
+                    <StarRating
+                        rating={starCount}
+                        setRating={setStarCount}
+                        starSize={30}
+                        starColor={'#f1c40f'}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Nhập nhận xét của bạn..."
+                        value={reviewText}
+                        onChangeText={text => setReviewText(text)}
+                        multiline
+                    />
+                    <TouchableOpacity
+                        style={[styles.button, (!reviewText || starCount === 0) && styles.buttonDisabled]}
+                        onPress={submitReview}
+                        disabled={!reviewText || starCount === 0}
+                    >
+                        <Text style={styles.buttonText}>Gửi nhận xét</Text>
+                    </TouchableOpacity>
+                </View>
                 <BottomButtonBar />
             </View>
-
         </TouchableWithoutFeedback>
     );
 }
@@ -51,52 +58,68 @@ function ReviewScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         paddingHorizontal: 20,
-        position: 'relative',
-    }, header: {
+        backgroundColor: '#f9f9f9',
+    },
+    header: {
         position: 'absolute',
         flexDirection: 'row',
-        height: Dimensions.get('window').height * 0.06,
+        height: Dimensions.get('window').height * 0.07,
         width: Dimensions.get('window').width,
-        textAlign: 'center',
-        borderColor: 'grey',
-        borderWidth: 0,
-        borderBottomWidth: 2,
-        top: 0,
-        justifyContent: 'center',
-        marginTop: Dimensions.get('window').height * 0.03, // Điều chỉnh marginTop để căn giữa theo chiều dọc
+        paddingHorizontal: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
+        marginTop: 40,
     },
     titleHeader: {
         fontSize: 24,
         fontWeight: 'bold',
-        textAlign: 'center',
         flex: 1,
-        marginLeft: -28,
-    }, icon: {
         textAlign: 'center',
-        marginLeft: 10,
+        marginRight: 28, // To offset the back icon
     },
-    titleText: {
-        flex: 2,
-        color: "black",
-        fontSize: 30,
-        fontWeight: "bold",
+    icon: {
+        left: 10,
         textAlign: 'center',
+    },
+    content: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: 20,
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginBottom: 20,
+        textAlign: 'center',
     },
     input: {
+        marginTop: 50,
         width: '100%',
-        height: 150,
+        height: 100,
         borderColor: 'gray',
         borderWidth: 1,
-        marginBottom: 20,
+        borderRadius: 8,
         padding: 10,
+        backgroundColor: '#fff',
+        textAlignVertical: 'top',
+        marginBottom: 20,
+    },
+    button: {
+        width: '100%',
+        padding: 15,
+        borderRadius: 8,
+        backgroundColor: '#4285F4',
+        alignItems: 'center',
+    },
+    buttonDisabled: {
+        backgroundColor: '#a1c0f9',
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
     },
 });
 

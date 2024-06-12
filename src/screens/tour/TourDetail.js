@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Button, StyleSheet, Alert, SafeAreaView, TextInput, Image, Dimensions, ScrollView, FlatList} from "react-native";
+import { View, Text, TouchableOpacity, Button, StyleSheet, Alert, SafeAreaView, TextInput, Image, Dimensions, ScrollView, FlatList } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -35,7 +35,7 @@ export default function TourDetail({ route }) {
             <View style={styles.title}>
                 <Text style={styles.titleText}>{item.title}</Text>
             </View>
-
+            
             <View style={styles.contentContainer}>
                 <SliderBox
                     style={styles.image}
@@ -46,22 +46,22 @@ export default function TourDetail({ route }) {
                     circleLoop
                     autoplayInterval={4000}
                 />
-                <ScrollView style={{marginLeft: '3%', marginRight: '3%'}}>
-                    <View style={{marginTop: '5%'}}>
+                <ScrollView style={{ marginLeft: '3%', marginRight: '3%' }}>
+                    <View style={{ marginTop: '5%' }}>
                         <Text>{item.detail}</Text>
                     </View>
                 </ScrollView>
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={ticketStyles.icon} onPress={() => navigation.goBack()}>
-                            <Entypo name="arrow-long-left" size={50}>
-                            </Entypo>
-                        </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={ticketStyles.icon} onPress={() => navigation.goBack()}>
+                        <Entypo name="arrow-long-left" size={32}>
+                        </Entypo>
+                    </TouchableOpacity>
 
-                        {/*<TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
+                    {/*<TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
                             <Entypo name="arrow-long-right" size={50}>
                             </Entypo>
                         </TouchableOpacity>*/}
-                    </View>
+                </View>
             </View>
 
             <BottomButtonBar />
@@ -77,40 +77,48 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     title: {
+        // position: 'absolute',
         flexDirection: 'row',
-        width: Dimensions.get('window').width * 0.9,
-        margin: '5%',
-        marginTop: '10%',
+        height: Dimensions.get('window').height * 0.08,
+        width: Dimensions.get('window').width * 0.98,
+        marginTop: 40,
+        marginLeft: 5,
         textAlign: 'center',
+        borderColor: 'grey',
+        borderWidth: 0,
+        borderBottomWidth: 2,
+        top: 0,
     },
     titleText: {
-        flex: 2,
+        flex: 1,
         color: "black",
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: "bold",
         textAlign: 'center',
     },
     contentContainer: {
+        marginTop: 15,
+        marginBottom: 75,
+        flex: 1,
         width: Dimensions.get('window').width * 0.9,
-        height: Dimensions.get('window').height * 0.75,
+        // height: Dimensions.get('window').height * 0.1,
         borderWidth: 1,
         borderRadius: 20,
         borderColor: 'black',
         backgroundColor: 'rgba(209,209,209, 0.8)',
         marginLeft: '5%',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
     },
     image: {
         width: Dimensions.get('window').width * 0.85,
-        height: Dimensions.get('window').height * 0.2,
+        height: Dimensions.get('window').height * 0.25,
         borderRadius: 20,
         margin: '2.5%',
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginRight: '9%',
-        margin: '3%',
+        margin: '1%',
     },
     icon: {
         textAlign: 'center',

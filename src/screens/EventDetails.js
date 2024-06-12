@@ -34,6 +34,7 @@ export default function EventDetails({route}) {
 
 const styles = StyleSheet.create({
     container: {
+        paddingTop: 20,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -73,7 +74,6 @@ const styles = StyleSheet.create({
     descriptionText: {
         fontSize: 16,
         textAlign: 'justify',
-        marginBottom: 100
     },
     image: {
         width: Dimensions.get('window').width,

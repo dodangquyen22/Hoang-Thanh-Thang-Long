@@ -1,10 +1,11 @@
 import * as React from "react";
-import { View, Text, TouchableOpacity, Button, StyleSheet, Alert, SafeAreaView, TextInput, ScrollView, Linking  } from "react-native";
+import { View, Text, TouchableOpacity, Button, StyleSheet, Alert, SafeAreaView, TextInput, ScrollView, Linking, Dimensions } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import DatePicker from 'react-native-date-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import BottomButtonBar from "../../components/NavigatorBottomBar";
 import { PopUp } from "../../components/PopUp";
@@ -30,7 +31,7 @@ export default function TicketScreen() {
 
     const currentDate = new Date();
     const [date, setDate] = React.useState(new Date());
-    const [show, setShow] = React.useState(false)
+    const [show, setShow] = React.useState(false);
     const [warn, setWarn] = React.useState(false);
 
     const [isConfirmVisible, setConfirmVisible] = React.useState(false);
@@ -42,41 +43,47 @@ export default function TicketScreen() {
     const nameRegex = /^[a-zA-Z][a-zA-Z ]*[a-zA-Z]$/;
 
     const handlePress = async (buttonName) => {
-        // navigation.navigate(buttonName);
         setConfirmVisible(!isConfirmVisible);
         info.name = text;
         info.phone = phone;
         info.date = date;
         info.adult = adultTicket;
         info.child = childTicket;
-        info.fee = price * adultTicket + price * childTicket / 2;
+        info.fee = price * adultTicket + (price * childTicket / 2);
 
-        const amount = 10000; // Số tiền đơn hàng
-        const orderInfo = "test"; // Thông tin đơn hàng
+        const amount = info.fee;
+        const orderInfo = "Mua vé tham quan hoàng thành";
         const formData = new FormData();
+        parsedData = await AsyncStorage.getItem('userData');
+        username = JSON.parse(parsedData);
+
         formData.append('amount', amount);
         formData.append('orderInfo', orderInfo);
+
         try {
-            const response = await fetch('http://192.168.45.7:8080/submitOrder', {
-              method: 'POST',
-              body: formData,
+            const response = await fetch(`http://${IPWifi}:8088/submitOrder`, {
+                method: 'POST',
+                body: formData,
             });
-        
+
             if (response.ok) {
-              let vnpayUrl = await response.text();
-              console.log('VNPay URL:', vnpayUrl);
-              vnpayUrl = vnpayUrl.substring(9, vnpayUrl.length);
-              console.log('VNPay URL:', vnpayUrl);
+                let vnpayUrl = await response.text();
+                vnpayUrl = vnpayUrl.substring(9, vnpayUrl.length);
 
-              const res = await Linking.openURL(vnpayUrl);
-
+                const res = await Linking.openURL(vnpayUrl);
+                if (res) {
+                    setTimeout(() => {
+                        navigation.navigate('SuccessTicket')
+                    }, 3000);
+                } else {
+                    console.log('Payment failed');
+                }
             } else {
-              console.error('Submit order failed');
+                console.error('Submit order failed');
             }
-          } catch (error) {
+        } catch (error) {
             console.error('Error submitting order:', error);
-          }
-
+        }
     };
 
     const toggleModal = (typeOfModal) => {
@@ -98,6 +105,7 @@ export default function TicketScreen() {
         } else {
             setDate(currentDate);
             setWarn(true);
+            setShow(false);
         }
     };
 
@@ -116,11 +124,9 @@ export default function TicketScreen() {
 
     const onMinusPress = (typeOfTicket) => {
         if (typeOfTicket == 'adult') {
-            if (adultTicket > 0)
-                onChangeAdult(adultTicket - 1);
+            if (adultTicket > 0) onChangeAdult(adultTicket - 1);
         } else {
-            if (childTicket > 0)
-                onChangeChild(childTicket - 1);
+            if (childTicket > 0) onChangeChild(childTicket - 1);
         }
     };
 
@@ -133,44 +139,45 @@ export default function TicketScreen() {
     };
 
     return (
-        <View style={ticketStyles.container}>
-            <View style={ticketStyles.title}>
-                <TouchableOpacity style={ticketStyles.icon} onPress={() => navigation.goBack()}>
-                    <Ionicons name="chevron-back-circle-outline" size={40}>
-                    </Ionicons>
+        <View style={styles.container}>
+            <View style={styles.title}>
+                <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
+                    <Ionicons name="arrow-back" size={32}  />
                 </TouchableOpacity>
-                <Text style={ticketStyles.titleText}>Đặt vé</Text>
-                <TouchableOpacity style={ticketStyles.icon} onPress={() => toggleModal('help')}>
-                    <Ionicons style={ticketStyles.icon} name="information-circle-outline" size={40}>
-                    </Ionicons>
+                <Text style={styles.titleText}>Đặt vé</Text>
+                <TouchableOpacity style={styles.icon} onPress={() => toggleModal('help')}>
+                    <Ionicons name="information-circle-outline" size={32}  />
                 </TouchableOpacity>
             </View>
 
-            <ScrollView style={ticketStyles.formContainer}>
-                <Text style={ticketStyles.label}>Họ và tên:</Text>
+            <ScrollView style={styles.formContainer}>
+                <Text style={styles.label}>Họ và tên:</Text>
                 <TextInput
-                    style={ticketStyles.input}
+                    style={styles.input}
                     onChangeText={onChangeText}
                     value={text}
-                    placeholder='Nguyễn Văn A' />
-                <Text style={ticketStyles.label}>Số điện thoại:</Text>
+                    placeholder='Nguyễn Văn A'
+                    placeholderTextColor="#999"
+                />
+                <Text style={styles.label}>Số điện thoại:</Text>
                 <TextInput
-                    style={ticketStyles.input}
+                    style={styles.input}
                     onChangeText={onChangePhone}
                     value={phone}
                     keyboardType="numeric"
                     maxLength={10}
+                    placeholder='0123456789'
+                    placeholderTextColor="#999"
                 />
-                <Text style={ticketStyles.label}>Ngày tham quan:</Text>
-                <TouchableOpacity style={ticketStyles.inputContainer} onPress={() => setShow(true)}>
-                    <Text style={ticketStyles.inputDate}>{formatDate(date)}</Text>
-                    <FontAwesome style={ticketStyles.calendar} name="calendar" size={20}></FontAwesome>
-
+                <Text style={styles.label}>Ngày tham quan:</Text>
+                <TouchableOpacity style={styles.inputContainer} onPress={() => setShow(true)}>
+                    <Text style={styles.inputDate}>{formatDate(date)}</Text>
+                    <FontAwesome name="calendar" size={20} color="#007AFF" />
                 </TouchableOpacity>
 
                 {show && (
                     <DateTimePicker
-                        style={ticketStyles.datePicker}
+                        style={styles.datePicker}
                         testID="dateTimePicker"
                         value={date}
                         mode='date'
@@ -181,44 +188,44 @@ export default function TicketScreen() {
                     />
                 )}
 
-                <View style={ticketStyles.warning}>
-                    {(warn) ? <Text style={{ color: 'red' }}>Vui lòng chọn ngày từ {formatDate(new Date())} trở đi!</Text> : <Text></Text>}
+                <View style={styles.warning}>
+                    {warn && <Text style={{ color: 'red' }}>Vui lòng chọn ngày từ {formatDate(new Date())} trở đi!</Text>}
                 </View>
-                <View>
-                    <Text style={ticketStyles.label}>Số lượng vé:</Text>
-                    <View style={ticketStyles.ticketContainer}>
-                        <Text style={ticketStyles.subTitle}>Vé người lớn: </Text>
-                        <View style={ticketStyles.countContainer}>
-                            <TouchableOpacity onPress={() => onMinusPress('adult')}>
-                                <FontAwesome style={ticketStyles.countIcon} name="minus-square-o" size={18}></FontAwesome>
-                            </TouchableOpacity>
-                            <Text style={ticketStyles.countNumber}>{adultTicket}</Text>
-                            <TouchableOpacity onPress={() => onPlusPress('adult')}>
-                                <FontAwesome style={ticketStyles.countIcon} name="plus-square-o" size={18}></FontAwesome>
-                            </TouchableOpacity>
-                            <Text style={ticketStyles.priceStyle}>{price * adultTicket} VND</Text>
-                        </View>
 
+                <View>
+                    <Text style={styles.label}>Số lượng vé:</Text>
+                    <View style={styles.ticketContainer}>
+                        <Text style={styles.subTitle}>Vé người lớn: </Text>
+                        <View style={styles.countContainer}>
+                            <TouchableOpacity onPress={() => onMinusPress('adult')}>
+                                <FontAwesome name="minus-square-o" size={18} color="#007AFF" />
+                            </TouchableOpacity>
+                            <Text style={styles.countNumber}>{adultTicket}</Text>
+                            <TouchableOpacity onPress={() => onPlusPress('adult')}>
+                                <FontAwesome name="plus-square-o" size={18} color="#007AFF" />
+                            </TouchableOpacity>
+                            <Text style={styles.priceStyle}>{price * adultTicket} VND</Text>
+                        </View>
                     </View>
-                    <View style={ticketStyles.ticketContainer}>
-                        <Text style={ticketStyles.subTitle}>Vé học sinh / sinh viên / người cao tuổi: </Text>
-                        <View style={ticketStyles.countContainer}>
+                    <View style={styles.ticketContainer}>
+                        <Text style={styles.subTitle}>Vé học sinh / sinh viên / người cao tuổi: </Text>
+                        <View style={styles.countContainer}>
                             <TouchableOpacity onPress={() => onMinusPress('child')}>
-                                <FontAwesome style={ticketStyles.countIcon} name="minus-square-o" size={18}></FontAwesome>
+                                <FontAwesome name="minus-square-o" size={18} color="#007AFF" />
                             </TouchableOpacity>
-                            <Text style={ticketStyles.countNumber}>{childTicket}</Text>
+                            <Text style={styles.countNumber}>{childTicket}</Text>
                             <TouchableOpacity onPress={() => onPlusPress('child')}>
-                                <FontAwesome style={ticketStyles.countIcon} name="plus-square-o" size={18}></FontAwesome>
+                                <FontAwesome name="plus-square-o" size={18} color="#007AFF" />
                             </TouchableOpacity>
-                            <Text style={ticketStyles.priceStyle}>{price * childTicket / 2} VND</Text>
+                            <Text style={styles.priceStyle}>{price * childTicket / 2} VND</Text>
                         </View>
                     </View>
                 </View>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => handleConfirm()}>
+                <Text style={styles.button}>Xác nhận</Text>
+            </TouchableOpacity>
             </ScrollView>
 
-            <TouchableOpacity style={ticketStyles.buttonContainer} onPress={() => handleConfirm()}>
-                <Text style={ticketStyles.button}>Xác nhận</Text>
-            </TouchableOpacity>
 
             <BottomButtonBar />
 
@@ -226,12 +233,11 @@ export default function TicketScreen() {
                 <PopUp.Container>
                     <PopUp.Header title="Xác nhận thông tin" />
                     <PopUp.Body>
-                        <Text style={ticketStyles.popText}>Người đặt vé: {text}</Text>
-                        <Text style={ticketStyles.popText}>Số điện thoại: {phone}</Text>
-                        <Text style={ticketStyles.popText}>Thông tin vé: {adultTicket} vé người lớn + {childTicket} vé học sinh /
-                            sinh viên / người cao tuổi, ngày {formatDate(date)}</Text>
-                        <Text style={ticketStyles.popText}>Thành tiền: </Text>
-                        <Text style={ticketStyles.strong}>{price * adultTicket + price * childTicket / 2} VND</Text>
+                        <Text style={styles.popText}>Người đặt vé: {text}</Text>
+                        <Text style={styles.popText}>Số điện thoại: {phone}</Text>
+                        <Text style={styles.popText}>Thông tin vé: {adultTicket} vé người lớn + {childTicket} vé học sinh / sinh viên / người cao tuổi, ngày {formatDate(date)}</Text>
+                        <Text style={styles.popText}>Thành tiền: </Text>
+                        <Text style={styles.strong}>{price * adultTicket + (price * childTicket / 2)} VND</Text>
                     </PopUp.Body>
                     <PopUp.Footer>
                         <Button title="Quay lại" onPress={() => setConfirmVisible(!isConfirmVisible)} />
@@ -244,16 +250,17 @@ export default function TicketScreen() {
                 <PopUp.Container>
                     <PopUp.Header title="Thông báo" />
                     <PopUp.Body>
-                        {(text == '' || phone == '') ?
-                            <Text style={ticketStyles.popText}>Vui lòng điền đầy đủ thông tin!</Text> :
-                            ((nameRegex.test(text)) ? (<Text style={ticketStyles.popText}>Họ và tên không hợp lệ!</Text>) :
-                                ((phone.length != 10 || phone.charAt(0) != '0') ? (<Text style={ticketStyles.popText}>Số điện thoại không hợp lệ!</Text>) :
-                                    ((adultTicket <= 0 || childTicket <= 0) ? (<Text style={ticketStyles.popText}>Vui lòng chọn số lượng vé!</Text>) :
-                                        (<Text style={ticketStyles.popText}>No error found!</Text>)
-                                    )
-                                )
-                            )
-                        }
+                        {text == '' || phone == '' ? (
+                            <Text style={styles.popText}>Vui lòng điền đầy đủ thông tin!</Text>
+                        ) : nameRegex.test(text) ? (
+                            <Text style={styles.popText}>Họ và tên không hợp lệ!</Text>
+                        ) : phone.length != 10 || phone.charAt(0) != '0' ? (
+                            <Text style={styles.popText}>Số điện thoại không hợp lệ!</Text>
+                        ) : adultTicket <= 0 || childTicket <= 0 ? (
+                            <Text style={styles.popText}>Vui lòng chọn số lượng vé!</Text>
+                        ) : (
+                            <Text style={styles.popText}>No error found!</Text>
+                        )}
                     </PopUp.Body>
                     <PopUp.Footer>
                         <Button title="Quay lại" onPress={() => setRejectVisible(!isRejectVisible)} />
@@ -265,8 +272,8 @@ export default function TicketScreen() {
                 <PopUp.Container>
                     <PopUp.Header title="Hướng dẫn mua vé" />
                     <PopUp.Body>
-                        <Text style={ticketStyles.popText}>Điền đầy đủ thông tin "Họ và tên", "Số điện thoại", sau đó chọn ngày tham quan và số lượng vé tương ứng</Text>
-                        <Text style={ticketStyles.popText}>Lưu ý: Thanh toán vé tại quầy vé ở cổng Hoàng Thành Thăng Long.</Text>
+                        <Text style={styles.popText}>Điền đầy đủ thông tin "Họ và tên", "Số điện thoại", sau đó chọn ngày tham quan và số lượng vé tương ứng</Text>
+                        <Text style={styles.popText}>Lưu ý: Thanh toán vé tại quầy vé ở cổng Hoàng Thành Thăng Long.</Text>
                     </PopUp.Body>
                     <PopUp.Footer>
                         <Button title="Quay lại" onPress={() => setHelpVisible(!isHelpVisible)} />
@@ -274,5 +281,129 @@ export default function TicketScreen() {
                 </PopUp.Container>
             </PopUp>
         </View>
-    )
-};
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    backgroundColor: "#f9f9f9",
+    },
+    title: {
+        flexDirection: "row",
+    alignItems: "center",
+    height: Dimensions.get("window").height * 0.08,
+    width: Dimensions.get("window").width,
+    paddingHorizontal: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ddd",
+    marginTop: 30,
+    },
+    icon: {
+        paddingHorizontal: 10,
+        textAlign: "center",
+    },
+    titleText: {
+        fontSize: 24,
+    fontWeight: "bold",
+    flex: 1,
+    textAlign: "center",
+    marginRight: 32,
+    },
+    formContainer: {
+        padding: 15,
+        backgroundColor: '#fff',
+        marginBottom: 10,
+        elevation: 2,
+    },
+    label: {
+        fontSize: 16,
+        color: '#333',
+        marginVertical: 5,
+    },
+    input: {
+        height: 40,
+        borderColor: '#ddd',
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        marginBottom: 10,
+    },
+    inputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderColor: '#ddd',
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingHorizontal: 10,
+        height: 40,
+        marginBottom: 10,
+    },
+    inputDate: {
+        flex: 1,
+        fontSize: 16,
+        color: '#333',
+    },
+    calendar: {
+        marginLeft: 10,
+    },
+    warning: {
+        marginBottom: 10,
+    },
+    ticketContainer: {
+        marginBottom: 5,
+    },
+    subTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 5,
+    },
+    countContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    countIcon: {
+        marginHorizontal: 10,
+    },
+    countNumber: {
+        fontSize: 16,
+        paddingHorizontal: 10,
+        fontWeight: 'bold',
+        color: '#333',
+    },
+    priceStyle: {
+        marginLeft: 20,
+        fontSize: 16,
+        color: '#333',
+    },
+    buttonContainer: {
+        backgroundColor: '#007AFF',
+        padding: 15,
+        borderRadius: 5,
+        alignItems: 'center',
+        margin: 15,
+        elevation: 2,
+    },
+    button: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    popText: {
+        fontSize: 16,
+        color: '#333',
+        marginVertical: 5,
+    },
+    strong: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+        marginVertical: 5,
+    },
+    datePicker: {
+        width: '100%',
+        backgroundColor: '#fff',
+    },
+});
+
