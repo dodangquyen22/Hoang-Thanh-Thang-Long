@@ -1,13 +1,12 @@
-// 
-
 import React, { useState, useEffect } from 'react';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { View, TextInput, Button, Image, StyleSheet, TouchableOpacity, Text, Keyboard, TouchableWithoutFeedback, SafeAreaView, ActivityIndicator } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IPWifi } from "../../constants";
 
 import * as Google from 'expo-auth-session/providers/google';
 import * as WebBrowser from 'expo-web-browser';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import 'firebase/auth';
 import {
   GoogleAuthProvider,
@@ -23,49 +22,77 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
 
   const auth = getAuth(getApp());
 
   const [request, response, promptAsync] = Google.useAuthRequest({
-    androidClientId: "15785712342-b6487ks6dhhjfge93cuvdp985f36meh5.apps.googleusercontent.com",
-    iosClientId: "15785712342-k9bgo9hridhm3snak23achi1qgpnsdpm.apps.googleusercontent.com",
-    expoClientId: "15785712342-9seersljt4fogjdq2vbe71lq72u7vjqc.apps.googleusercontent.com",
+    androidClientId: "833472590383-kllrdj1p3ejf2u52gn4tl4crnhtr6pcr.apps.googleusercontent.com",
   });
 
-  useEffect(() => {
-    if (response?.type == "success") {
-      const { id_token } = response.params;
-      const credential = GoogleAuthProvider.credential(id_token);
-      signInWithCredential(auth, credential);
-    }
-  }, [response]);
+  // useEffect(() => {
+  //   if (response?.type == "success") {
+  //     const { id_token } = response.params;
+  //     const credential = GoogleAuthProvider.credential(id_token);
+  //     signInWithCredential(auth, credential);
+  //   }
+  // }, [response]);
+  //
+  // const getLocalUser = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const userJSON = await AsyncStorage.getItem("@user");
+  //     const userData = userJSON ? JSON.parse(userJSON) : null;
+  //     setUserInfo(userData);
+  //   } catch (e) {
+  //     console.log(e, "Error getting local user");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  //
+  // useEffect(() => {
+  //   getLocalUser();
+  //   const unsub = onAuthStateChanged(auth, async (user) => {
+  //     if (user) {
+  //       await AsyncStorage.setItem("@user", JSON.stringify(user));
+  //       console.log(JSON.stringify(user, null, 2));
+  //       setUserInfo(user);
+  //     } else {
+  //       console.log("user not authenticated");
+  //     }
+  //   });
+  //   return () => unsub();
+  // }, []);
 
-  const getLocalUser = async () => {
+  useEffect(() => {
+    handleSignInWIthGoogle().then(r => console.log(JSON.stringify(userInfo, null, 2)));
+  }, [response])
+
+  async function handleSignInWIthGoogle() {
+    const user = await AsyncStorage.getItem("@user");
+    if (!user) {
+      if (response?.type === 'success') {
+        await getUserInfo(response.authentication.accessToken);
+      }
+    } else {
+      setUserInfo(JSON.parse(user));
+    }
+  }
+
+  const getUserInfo = async (token) => {
+    if (!token) return;
     try {
-      setLoading(true);
-      const userJSON = await AsyncStorage.getItem("@user");
-      const userData = userJSON ? JSON.parse(userJSON) : null;
-      setUserInfo(userData);
-    } catch (e) {
-      console.log(e, "Error getting local user");
-    } finally {
-      setLoading(false);
+      const response = await fetch('https://www.googleapis.com/userinfo/v2/me', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+      const user = await response.json();
+      await AsyncStorage.setItem('@user', JSON.stringify(user));
+      setUserInfo(user);
+    } catch (err) {
+      console.log(err.message);
     }
   };
-
-  useEffect(() => {
-    getLocalUser();
-    const unsub = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        await AsyncStorage.setItem("@user", JSON.stringify(user));
-        console.log(JSON.stringify(user, null, 2));
-        setUserInfo(user);
-      } else {
-        console.log("user not authenticated");
-      }
-    });
-    return () => unsub();
-  }, []);
 
   const handleLogin = async () => {
     setLoading(true);
@@ -125,10 +152,10 @@ const LoginScreen = ({ navigation }) => {
               <Text style={styles.buttonText}>Đăng kí</Text>
             </TouchableOpacity>
           </View>
-          {/* <TouchableOpacity style={styles.googleButton} onPress={() => promptAsync()}>
+          <TouchableOpacity style={styles.googleButton} onPress={() => promptAsync()}>
             <AntDesign name="google" size={24} color="white" />
             <Text style={styles.googleButtonText}>Sign In with Google</Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
         </View>
       </TouchableWithoutFeedback>
     </SafeAreaView>

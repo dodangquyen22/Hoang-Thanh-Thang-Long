@@ -2,7 +2,7 @@
 // const file1Path = RNFS.DocumentDirectoryPath + './data/cotco.txt';
 // const data1 = await RNFS.readFile(file1Path, 'utf8');
 // export const IPWifi = '192.168.45.7';
-export const IPWifi = '192.168.1.25';
+export const IPWifi = '192.168.1.12';
 
 
 export const destinationData = [
