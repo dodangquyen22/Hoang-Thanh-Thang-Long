@@ -9,7 +9,7 @@ import { ticketStyles } from "../../styles/globalStyles";
 import { info } from "./TicketScreen";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function SuccessScreen() {
+export default function FailureScreen() {
     const navigation = useNavigation();
     const [error, setError] = useState('');
     
@@ -70,8 +70,8 @@ export default function SuccessScreen() {
 
                 <View style={styles.box}>
                     <View style={styles.header}>
-                        <FontAwesome style={styles.icon} name='check' size={50}></FontAwesome>
-                        <Text style={styles.titleText}>Đặt vé thành công</Text>
+                        <FontAwesome style={styles.icon} name='times' size={50}></FontAwesome>
+                        <Text style={styles.titleText}>Thanh toán không thành công</Text>
                     </View>
 
                     <View style={styles.body}>
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     icon: {
-        color: 'rgb(86, 125, 137)',
+        color: 'rgb(191, 69, 52)',
         margin: '10%',
         textAlign: 'center',
         marginBottom: 10
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: "bold",
         textAlign: 'center',
-        color: 'rgb(86, 125, 137)',
+        color: 'rgb(191, 69, 52)',
     },
     footer: {
         flex: 1,
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width * 0.35,
         height: Dimensions.get('window').height * 0.05,
         borderRadius: 15,
-        backgroundColor: 'rgb(86, 125, 137)',
+        backgroundColor: 'rgb(191, 69, 52)',
         textAlign: 'center',
         marginBottom: '6%',
     },
